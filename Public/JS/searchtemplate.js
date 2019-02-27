@@ -1,3 +1,4 @@
+const sourceArray = ["CNN", "BBC News", "FOX NEWS"]; //a list of verified, custom sources to be used for creating custom buttons
 
 $(function () {
 
@@ -34,43 +35,30 @@ $(function () {
     // $(".searchBtn").on('click', searchNewzy);
 
 });
-const sourceArray = []; //a list of verified sources to be used for creating custom buttons
+
 const articleList = [];
 const keyword = '"' + $('.searchBtn').val().trim() + '"';
 const sortByPopularity = 'sortBy=popularity';
 const apiKey = 'apiKey=4a91afd2bdda4b18be76a2f996628566';
 const URL = `https://newsapi.org/v2/everything?`;
 
-//compile an array of valid news sources (english)
-let sourceList = [];
-let sourceCheck = '';
-const sourcesURL = `https://newsapi.org/v2/sources?language=en&${apiKey}`;
+//compile an array of valid news sources (english) into sourceList array
+const listSources = function(){
+    let sourceList = [];
+    let sourceName = '';
+    const sourcesURL = `https://newsapi.org/v2/sources?language=en&${apiKey}`;
 
-$.ajax({
-    
-    url: sourcesURL,
-    method: 'Get'
-}).then(function (resSources) {
-    for (i = 0; i < resSources.length; i++) {
-        sourceCheck = resSources[i].id;
-        sourceList.push(sourceCheck);
-    }
-    return sourceList;
-});
-//Receiving Input to create Custom Buttons//
-const addButton = function (event) {
-    event.preventDefault();
-    const sourceInput = $('#sourceInput').toLowerCase().substring(0, 3);
-    if (sourceList.includes(sourceInput)) {//NEED A WAY OF GIVING OPTION BETWEEN SIMILAR i.e. abc / abc australia
-
-        sourceArray.push(sourceInput);
-        render();
-    }
-    else {
-        alert(`${sourceInput} is not a valid news source`);
-    }
-    $('#sourceInput').val('');
-};
+    $.ajax({    
+        url: sourcesURL,
+        method: 'Get'
+    }).then(function (resSources) {
+        for (i = 0; i < resSources.length; i++) { //creates an array of strings holding source names ex: ["CNN", "ABC News", "Gizmodo"]
+        sourceName = resSources[i].name    
+        sourceList.push(sourceName);
+        }
+        return sourceList;
+    });
+}
 
 //keyword search with default 20 results//
 const genericKeyword = function () {
@@ -83,7 +71,6 @@ const genericKeyword = function () {
         }
         return articleList;
     });
-    console.log(articleList);
 };
 
 //keyword search, get 3 separate sources from most-popular//
@@ -109,4 +96,31 @@ const threeSources = function (keyword) {
         return articleList;
     });
     console.log(articleList);
+};
+
+//------------Rendering Button Group to Page------
+const render = function(){
+    //reset button list
+    $(".buttonRow").empty();
+    for(i=0; i<sourceArray.length; i++){
+        const newButton = $('<button>'); 
+        newButton.addClass('source-btn');
+        newButton.attr('data-name', sourceArray[i].id);
+        newButton.text(sourceArray[i].name;
+        $('.buttonRow').append(newButton);
+    }
+}
+
+//------Receiving Input to create Custom Buttons-------
+const addButton = function (event) {
+    event.preventDefault();
+    const sourceInput = $('#sourceInput').val().trim();
+    if(sourceList.includes(sourceInput)){
+        sourceArray.push(sourceInput);
+        render();
+    }
+        else {
+            alert( sourceInput + " is not a valid news source");
+    }
+    $('#sourceInput').val('');
 };
