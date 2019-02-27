@@ -1,8 +1,8 @@
 {
 
   "development": {
-    "username": "Newzy",
-    "password": "root",
+    "username": "root",
+    "password": "applestoapples",
     "database": "Newzy_db",
     "host": "127.0.0.1",
     "port": 3306,
