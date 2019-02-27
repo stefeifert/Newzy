@@ -124,3 +124,6 @@ const addButton = function (event) {
     }
     $('#sourceInput').val('');
 };
+//for development when we add the functionality to populate from our custom sources list
+//sample search using sources filter: https://newsapi.org/v2/top-headlines?sources=associated-press&apiKey=4a91afd2bdda4b18be76a2f996628566
+// sources uses the .id object value, so fox-news, not Fox News, e.g.
