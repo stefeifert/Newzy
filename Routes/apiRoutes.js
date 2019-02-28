@@ -33,6 +33,52 @@ module.exports = function (app) {
         });
     });
 
+    // User Routes
+
+    // Post User Session data
+    app.post('/api/session', function (req, res) {
+        db.User.find(req.body)
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    });
+
+    // User login API view, by ID
+    app.get('/api/user/:id', function (req, res) {
+        db.User.find({ _id: req.params.id })
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    });
+
+    // User login API view, all users
+    app.get('/api/user', function (req, res) {
+        db.User.findAll()
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    });
+
+    // User post to create a new login
+    app.post('/api/user', function (req, res) {
+        db.User.create(req.body)
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    });
+
     // app.put('/api/articles/:id', function (req, res) {
     //     db.Article.update(
     //         req.body,
