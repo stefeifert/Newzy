@@ -1,22 +1,25 @@
 const db = require('../Models');
 
 module.exports = function (app) {
-    // Getting all the articles within the db
+    // Getting all the articles within the db for the username who is logged in
     app.get('/api/articles', function (req, res) {
-        db.Article.findAll().then(function (dbArticle) {
+        db.Article.find({
+            where: {
+                username: req.body.username
+            }
+        }).then(function (dbArticle) {
             res.json(dbArticle);
         }).catch(function (error) {
             res.json({ error: error });
         });
     });
 
-    // Finding a specifc article within the db
+    // Finding a specifc article within the db by article ID
     app.get('/api/articles/:id', function (req, res) {
         db.Article.findOne({
             where: {
                 id: req.params.id
-            },
-            include: [db.Author]
+            }
         }).then(function (dbArticle) {
             res.json(dbArticle);
         }).catch(function (error) {
