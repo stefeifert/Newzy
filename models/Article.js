@@ -1,5 +1,12 @@
 module.exports = function(connection, Sequelize) {
     let Article = connection.define('Article', {
+      username: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: true
+        }
+      },
       article_name: {
         type: Sequelize.STRING,
         allowNull: false,
