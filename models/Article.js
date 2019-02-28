@@ -28,6 +28,14 @@ module.exports = function(connection, Sequelize) {
         }
       }
     });
+
+    Article.associate = function(models) {
+    
+      // We're saying that a Article should belong to an Author
+      Article.belongsTo(models.User, {
+        onDelete: 'cascade'
+      });
+    };
   
     return Article;
   };
