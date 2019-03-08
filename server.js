@@ -4,15 +4,16 @@ const db = require('./models')
 
 const app = express();
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3001;
 
 
 
 app.use(express.urlencoded({ success: true }));
 app.use(express.json());
 
-
-app.use(express.static(path.join(__dirname, 'public')));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 require('./routes/apiRoutes.js')(app);
 // require('./routes/html-routes.js')(app);
