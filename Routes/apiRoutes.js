@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 // Getting all the articles within the db for the username who is logged in
-router.get('/api/articles', function (req, res) {
+router.get('/api/article', function (req, res) {
     Article.find({
         where: {
             username: req.body.username
@@ -17,7 +17,7 @@ router.get('/api/articles', function (req, res) {
 });
 
 // Finding a specifc article within the db by article ID
-router.get('/api/articles/:id', function (req, res) {
+router.get('/api/article:id', function (req, res) {
     Article.findOne({
         where: {
             id: req.params.id
@@ -30,7 +30,7 @@ router.get('/api/articles/:id', function (req, res) {
 });
 
 // Post route for saving an article
-router.post('/api/articles', function (req, res) {
+router.post('/api/article', function (req, res) {
     Article.create(req.body).then(function (dbArticle) {
         res.json(dbArticle);
     }).catch(function (error) {
@@ -40,9 +40,9 @@ router.post('/api/articles', function (req, res) {
 
 
 // User login API view, all users
-router.get('/api/users', function (req, res) {
+router.get('/api/user', function (req, res) {
     User.findAll()
-        .populate('articles')
+        .populate('article')
         .then(function (data) {
             res.json(data);
         })
