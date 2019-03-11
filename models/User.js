@@ -18,10 +18,10 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  articles: [
+  article: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Articles"
+      ref: "Article"
     }
   ]
 });
