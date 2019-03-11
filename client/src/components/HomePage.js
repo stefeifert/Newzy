@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from "react";
 import '../App.css';
 import axios from 'axios'
 import NewzyCalls from './NewzyCalls';
