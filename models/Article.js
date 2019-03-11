@@ -1,49 +1,17 @@
-module.exports = function(connection, Sequelize) {
-    let Article = connection.define('Article', {
-      username: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-          notEmpty: true
-        }
-      },
-      article_name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-          notEmpty: true
-        }
-      },
-      author_name: {
-        type: Sequelize.STRING,
-        validate: {
-          notEmpty: true
-        }
-      },
-      publication_source: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-          notEmpty: true
-        }
-      },
-      article_url: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-          notEmpty: true
-        }
-      }
-    });
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-    Article.associate = function(models) {
-    
-      // We're saying that a Article should belong to an Author
-      Article.belongsTo(models.User, {
-        onDelete: 'cascade'
-      });
-    };
-  
-    return Article;
-  };
-  
+/**
+ * Create a new Task Schema to map Mongo documents to an object in our node application
+ */
+var NoteSchema = new Schema({
+  article_name: String,
+  author_name: String,
+  publication_source: String,
+  article_url: String
+
+});
+
+const Note = mongoose.model("Note", NoteSchema);
+
+module.exports = Note;
