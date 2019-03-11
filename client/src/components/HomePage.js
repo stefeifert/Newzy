@@ -1,12 +1,10 @@
 import React from 'react';
 
-function toggleSidebar (){
-  document.getElementById("sidebar").classList.toggle('active');
-}
+
 
 const HomePage = () => (
   <div>
-
+    <h1>Get The Newzy</h1>
   </div>
 
 )
