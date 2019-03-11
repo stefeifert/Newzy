@@ -1,30 +1,29 @@
-module.exports = function (connection, Sequelize) {
-    const User = connection.define('User', {
-        username: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
-        },
-        password: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
-        }
-    });
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-    User.associate = function (models) {
+const UserSchema = new Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  },
+  articles: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Articles"
+    }
+  ]
+});
 
-        // Associating User with Articles
-        User.hasMany(models.Article, {
-            foreignKey: {
-                allowNull: true
-            }
-        });
-    };
-
-    return User;
-};
+module.exports = User = mongoose.model("users", UserSchema);

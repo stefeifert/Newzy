@@ -3,10 +3,10 @@
   "development": {
     "username": "root",
     "password": "applestoapples",
-    "database": "Newzy_db",
+    "database": "Newzy",
     "host": "127.0.0.1",
     "port": 3306,
-    "dialect": "mysql"
+    "dialect": "mongodb"
   },
   "test": {
     "username": "Newzy",
@@ -14,7 +14,7 @@
     "database": "database_test",
     "host": "127.0.0.1",
     "port": 3306,
-    "dialect": "mysql"
+    "dialect": "mongodb"
   },
   "production": {
     "username": "Newzy",
@@ -22,6 +22,6 @@
     "database": "database_production",
     "host": "127.0.0.1",
     "port": 3306,
-    "dialect": "mysql"
+    "dialect": "mongodb"
   }
 }
