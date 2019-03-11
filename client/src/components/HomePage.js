@@ -32,7 +32,7 @@ class HomePage extends Component {
     sourceIds: [],
     isValidSource: false,
     keywordSearch: '',
-    searchResults: ''
+    searchResults: []
 }
 
 createSourceList = () => {
@@ -45,8 +45,8 @@ createSourceList = () => {
 searchResults = (event) => {
   axios.get(`https://newsapi.org/v2/everything?q="${this.state.keywordSearch}"&apiKey=4a91afd2bdda4b18be76a2f996628566`)
   .then((result) => {
-    this.setState({searchResults: result.data});
-    console.log(this.state.searchResults)
+    this.setState({searchResults:[...result]});
+    this.setState({keywordSearch: ''});
   })
 }
 searchChangeHandler = (event) => {

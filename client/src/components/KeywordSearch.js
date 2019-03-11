@@ -8,7 +8,7 @@ const KeywordSearch = props => (
         <button onClick={props.searchClickHandler}>keyword search             
         </button>
         </span>
-        <ul className="searchResults">{props.searchResults}</ul>
+        {props.searchResults}
     </div>
 )
 
