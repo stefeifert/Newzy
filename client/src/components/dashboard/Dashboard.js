@@ -9,19 +9,20 @@ class Dashboard extends Component {
     e.preventDefault();
     this.props.logoutUser();
   };
-render() {
+  render() {
     const { user } = this.props.auth;
-return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
-        <div className="row">
-          <div className="col s12 center-align">
-            <h4>
+    return (
+      <div className="navbar-fixed">
+        <nav className="z-depth-0">
+          <ul>
+            <li>
               <b>Hey there,</b> {user.name.split(" ")[0]}
               <p className="flow-text grey-text text-darken-1">
                 You are logged into a full-stack{" "}
                 <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
               </p>
-            </h4>
+            </li>
+            <li>
             <button
               style={{
                 width: "150px",
@@ -34,8 +35,9 @@ return (
             >
               Logout
             </button>
-          </div>
-        </div>
+            </li>
+          </ul>
+        </nav>
       </div>
     );
   }

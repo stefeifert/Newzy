@@ -3,6 +3,7 @@ import '../App.css';
 import axios from 'axios'
 import NewzyCalls from './NewzyCalls';
 import KeywordSearch from './KeywordSearch';
+import Dashboard from "./dashboard/Dashboard";
 
 
 //https://newsapi.org/v2/everything?q="hugo chavez"&apiKey=4a91afd2bdda4b18be76a2f996628566
@@ -91,6 +92,7 @@ sourcesClickHandler = (event) => {
     )
     return (
       <div className="App">
+        <Dashboard />
         <NewzyCalls 
 
         sourcesChangeHandler={this.sourcesChangeHandler}
