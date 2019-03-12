@@ -104,12 +104,15 @@ class HomePage extends Component {
           searchClickHandler={this.searchClickHandler}
           searchResults={this.state.searchResults}
         />
-        <ul>
-        {this.state.searchResults.map(d => <li key={d.publishedAt}>
-        {d.title} / {d.source.name} / {d.author} /<a href={d.url}>{d.url} </a>
+        <div>
+        {this.state.searchResults.map(d => <div key={d.publishedAt}>
+        <p>{d.title}</p> 
+        <p>{d.source.name}</p>
+        <p>{d.author}</p> 
+        <p><a href={d.url}>{d.url} </a></p>
         <hr></hr>
-        </li>)}
-        </ul>
+        </div>)}
+        </div>
 
       </div>
     );

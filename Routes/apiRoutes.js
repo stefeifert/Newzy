@@ -5,9 +5,9 @@ const router = express.Router();
 
 // Getting all the articles within the db for the username who is logged in
 router.get('/api/article', function (req, res) {
-    Article.find({
+    User.find({
         where: {
-            username: req.body.username
+            _id: req.body.email
         }
     }).then(function (dbArticle) {
         res.json(dbArticle);
@@ -18,7 +18,7 @@ router.get('/api/article', function (req, res) {
 
 // Finding a specifc article within the db by article ID
 router.get('/api/article:id', function (req, res) {
-    Article.findOne({
+    Article.findById({
         where: {
             id: req.params.id
         }
@@ -41,7 +41,7 @@ router.post('/api/article', function (req, res) {
 
 // User login API view, all users
 router.get('/api/user', function (req, res) {
-    User.findAll()
+    User.find()
         .populate('article')
         .then(function (data) {
             res.json(data);
