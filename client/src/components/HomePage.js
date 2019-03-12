@@ -4,7 +4,6 @@ import axios from 'axios'
 import SourceButtons from './SourceButtons';
 import KeywordSearch from './KeywordSearch';
 import Dashboard from "./dashboard/Dashboard";
-import Result from './Result';
 
 
 //https://newsapi.org/v2/everything?q="hugo chavez"&apiKey=4a91afd2bdda4b18be76a2f996628566
