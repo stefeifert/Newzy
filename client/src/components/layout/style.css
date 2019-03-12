@@ -1,3 +1,6 @@
-* {
-    background-image: src
+.App {
+    background-image: url(https://designshack.net/wp-content/uploads/geo-background.jpg);
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
 }
