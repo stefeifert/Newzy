@@ -6,12 +6,6 @@ import KeywordSearch from './KeywordSearch';
 import Dashboard from "./dashboard/Dashboard";
 
 
-//https://newsapi.org/v2/everything?q="hugo chavez"&apiKey=4a91afd2bdda4b18be76a2f996628566
-// article_name: String,
-// author_name: String,
-// publication_source: String,
-// article_url: String
-
 class HomePage extends Component {
   state = {
     sources: [
@@ -111,7 +105,6 @@ class HomePage extends Component {
       photo_url: event.target.getAttribute('pic')
     }
     this.setState({newArticle: clickedArticle}, this.createSave)
-    console.log(clickedArticle);
   }
 
   createSave = () => {
@@ -131,7 +124,7 @@ class HomePage extends Component {
     const sourcesBtn = currentSources.map(
       source => {
         return (
-          <button onClick={this.singleSourceClick}  key={source.id} value={source.id}>{source.name}</button>
+          <button className="btn btn-primary" onClick={this.singleSourceClick}  key={source.id} value={source.id}>{source.name}</button>
         )
       }
     )
@@ -162,7 +155,7 @@ class HomePage extends Component {
           <p style={{fontSize: 25, }}>{d.source.name}</p>
           <p style={{fontSize: 25, }}>{d.author}</p> 
           <p style={{fontSize: 20, }}><a href={d.url}>{d.url} </a></p>
-          <button onClick={this.articleSaver} title={d.title} author={d.author} publication={d.source.name} url={d.url} pic={d.urlToImage}>Save to My Articles</button>
+          <button className="btn btn-primary"onClick={this.articleSaver} title={d.title} author={d.author} publication={d.source.name} url={d.url} pic={d.urlToImage}>Save to My Articles</button>
           <hr></hr>
           </div>)}
           </div>

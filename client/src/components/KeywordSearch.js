@@ -6,7 +6,7 @@ const KeywordSearch = (props) => (
             <input 
             onChange={props.searchChangeHandler}
             value={props.value}/>
-            <button onClick={props.searchClickHandler}>keyword search             
+            <button className="btn btn-primary" onClick={props.searchClickHandler}>keyword search             
             </button>
         </div>
     </div>

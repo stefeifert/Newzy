@@ -23,14 +23,14 @@ class Dashboard extends Component {
                 <button
 
                   onClick={this.onLogoutClick}
-                  className="m-5 btn btn-md waves-effect waves-light hoverable blue accent-3"
+                  className="btn btn-primary waves-effect waves-light hoverable blue accent-3"
                 >
                   Logout
             </button>
               </li>
               <li>
                 <Link to="/SavedArticles">
-                <button>
+                <button className="btn btn-primary">
                     My Articles
                 </button>
                 </Link>

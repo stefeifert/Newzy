@@ -5,9 +5,10 @@ import React from 'react';
       <div>
         <span>
         <input 
+        className="input"
         onChange={props.sourcesChangeHandler}
         value={props.value}></input>
-        <button onClick={props.sourcesClickHandler}>Add News Source             
+        <button className="btn btn=primary"onClick={props.sourcesClickHandler}>Add News Source             
         </button>{props.btnRow}</span>
       </div>
     </div>
