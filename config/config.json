@@ -2,13 +2,8 @@
 
   "development": {
     "username": "root",
-<<<<<<< HEAD
-    "password": "hornuzi3",
-    "database": "Newzy_db",
-=======
     "password": "applestoapples",
-    "database": "Newzy",
->>>>>>> d7653067c13abee31d953219f12ee6736cb31e78
+    "database": "newzy",
     "host": "127.0.0.1",
     "port": 3306,
     "dialect": "mongodb"

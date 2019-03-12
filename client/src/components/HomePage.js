@@ -111,6 +111,10 @@ class HomePage extends Component {
       article_url: event.target.getAttribute('url'),
       photo_url: event.target.getAttribute('pic')
     }
+    // axios.post(`/api/article`)
+    //   .then((res) => {
+    //     this.setState
+    //   })
     console.log(clickedArticle);
     this.setState({newArticle: clickedArticle})
   }
