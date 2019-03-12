@@ -33,7 +33,8 @@ class HomePage extends Component {
     sourceIds: [],
     isValidSource: false,
     keywordSearch: '',
-    searchResults: []
+    searchResults: [],
+    singleSource: ''
   }
 
   createSourceList = () => {
@@ -43,6 +44,16 @@ class HomePage extends Component {
         console.log(this.state.sourceList);
       })
   }
+
+  createSourceNews = () => {
+    console.log(this.state.singleSource);
+    // axios.get(`https://newsapi.org/v2/top-headlines?sources=${this.state.singleSource}&apiKey=4a91afd2bdda4b18be76a2f996628566`)
+    // .then((result) => {
+    //   this.setState({ sourceList: result.data });
+    //   console.log(this.state.sourceList);
+    // })
+  }
+
   searchResults = (event) => {
     axios.get(`https://newsapi.org/v2/everything?q="${this.state.keywordSearch}"&apiKey=4a91afd2bdda4b18be76a2f996628566`)
       .then((result) => {
@@ -55,7 +66,6 @@ class HomePage extends Component {
     const keywordSearch = event.target.value;
     this.setState({ keywordSearch: keywordSearch });
   }
-
   searchClickHandler = (event) => {
     event.preventDefault();
     this.searchResults();
@@ -72,9 +82,16 @@ class HomePage extends Component {
 
   sourcesClickHandler = (event) => {
     event.preventDefault();
-    this.setState({ sources: [...this.state.sources, this.state.newSource] });
+    this.setState({ sources: [...this.state.sources, this.sState.newSource] });
     this.setState({ newSource: '' });
     console.log("sources: " + this.state.sources);
+  }
+
+  singleSourceClick = (event) => {
+    event.preventDefault();
+    const whichSource = event.target.value;
+    this.setState({singleSource: whichSource});
+    this.createSourceNews();
   }
 
   componentDidMount() {
@@ -86,7 +103,7 @@ class HomePage extends Component {
     const sourcesBtn = currentSources.map(
       source => {
         return (
-          <button key={source.id}>{source.name}</button>
+          <button onClick={this.singleSourceClick}  key={source.id} value={source.id}>{source.name}</button>
         )
       }
     )
@@ -104,12 +121,15 @@ class HomePage extends Component {
           searchClickHandler={this.searchClickHandler}
           searchResults={this.state.searchResults}
         />
-        <ul>
-        {this.state.searchResults.map(d => <li key={d.publishedAt}>
-        {d.title} / {d.source.name} / {d.author} /<a href={d.url}>{d.url} </a>
-        <hr></hr>
-        </li>)}
-        </ul>
+        <div>
+          {this.state.searchResults.map(d => <div key={d.publishedAt}>
+            <h5>{d.title}</h5>
+            <p>{d.source.name}</p>
+            <p>{d.author}</p>
+            <p><a href={d.url}>{d.url} </a></p>
+            <hr></hr>
+          </div>)}
+        </div>
 
       </div>
     );
