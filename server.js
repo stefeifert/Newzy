@@ -15,7 +15,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-
 // Bodyparser middleware
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
@@ -35,6 +34,12 @@ require("./passport-config/passport")(passport);
 // Routes
 app.use("/api/users", users);
 app.use(apiRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  app.get("*", function (req, res) {
+    res.sendFile(__dirname + "/client/build/index.html");
+  });
+}
 
 app.listen(PORT, () => {
 	console.log(`App listening on PORT: ${PORT}`)
