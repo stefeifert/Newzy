@@ -1,9 +1,10 @@
 import React from 'react';
 
-  const NewzyCalls = props => (
+  const SourceButtons = (props) => (
     <div>
       <div>
-        <span><input 
+        <span>
+        <input 
         onChange={props.sourcesChangeHandler}
         value={props.value}></input>
         <button onClick={props.sourcesClickHandler}>Add News Source             
@@ -14,4 +15,4 @@ import React from 'react';
 
 
 
-export default NewzyCalls;
+export default SourceButtons;

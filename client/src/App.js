@@ -31,6 +31,7 @@ if (localStorage.jwtToken) {
     window.location.href = "./login";
   }
 }
+
 class App extends Component {
   render() {
     return (
@@ -50,4 +51,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;

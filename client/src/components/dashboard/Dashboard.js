@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import SavedArticles from "../SavedArticles";
+import { BrowserRouter, Route } from "react-router-dom";
+
 
 
 class Dashboard extends Component {
@@ -9,34 +12,35 @@ class Dashboard extends Component {
     e.preventDefault();
     this.props.logoutUser();
   };
-render() {
+  render() {
     const { user } = this.props.auth;
-return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
-        <div className="row">
-          <div className="col s12 center-align">
-            <h4>
-              <b>Hey there,</b> {user.name.split(" ")[0]}
-              <p className="flow-text grey-text text-darken-1">
-                You are logged into a full-stack{" "}
-                <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
-              </p>
-            </h4>
-            <button
-              style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
-              onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-            >
-              Logout
+    return (
+      <BrowserRouter>
+        <div className="navbar-fixed">
+          <nav className="">
+            <ul>
+              <li>
+                <b>Hey there,</b> {user.name.split(" ")[0]}
+              </li>
+              <li>
+                <button
+
+                  onClick={this.onLogoutClick}
+                  className="m-5 btn btn-md waves-effect waves-light hoverable blue accent-3"
+                >
+                  Logout
             </button>
-          </div>
+              </li>
+              <li>
+                <button>
+                    <Route exact path="/SavedArticles" component={SavedArticles} />
+                    My Articles
+                </button>
+              </li>
+            </ul>
+          </nav>
         </div>
-      </div>
+      </BrowserRouter>
     );
   }
 }
