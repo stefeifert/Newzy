@@ -9,7 +9,6 @@ let ArticleSchema = new Schema({
   author_name: String,
   publication_source: String,
   article_url: String
-
 });
 
 const Article = mongoose.model("Article", ArticleSchema);

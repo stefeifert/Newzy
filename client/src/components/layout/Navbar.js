@@ -8,13 +8,12 @@ class Navbar extends Component {
         <nav className="z-depth-0">
           <div className="nav-wrapper white">
             <Link
-              to="/"
+              to="/HomePage"
               style={{
                 fontFamily: "monospace"
               }}
               className="col s5 brand-logo center black-text"
             >
-              <i className="material-icons">code</i>
               Newzy
             </Link>
           </div>
