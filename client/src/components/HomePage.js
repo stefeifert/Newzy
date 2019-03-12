@@ -4,7 +4,6 @@ import axios from 'axios'
 import SourceButtons from './SourceButtons';
 import KeywordSearch from './KeywordSearch';
 import Dashboard from "./dashboard/Dashboard";
-import Result from './Result';
 
 
 //https://newsapi.org/v2/everything?q="hugo chavez"&apiKey=4a91afd2bdda4b18be76a2f996628566
@@ -111,8 +110,16 @@ class HomePage extends Component {
       article_url: event.target.getAttribute('url'),
       photo_url: event.target.getAttribute('pic')
     }
+    this.setState({newArticle: clickedArticle}, this.createSave)
     console.log(clickedArticle);
-    this.setState({newArticle: clickedArticle})
+  }
+
+  createSave = () => {
+    axios.post(`api/article`, this.state.newArticle)
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+    })
   }
 
   componentDidMount() {

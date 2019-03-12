@@ -3,7 +3,7 @@
   "development": {
     "username": "root",
     "password": "applestoapples",
-    "database": "Newzy",
+    "database": "newzy",
     "host": "127.0.0.1",
     "port": 3306,
     "dialect": "mongodb"
@@ -13,15 +13,10 @@
     "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
-    "port": 3306,
     "dialect": "mongodb"
   },
   "production": {
-    "username": "Newzy",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "port": 3306,
+    "use_env_variable": "MONGODB_URI",
     "dialect": "mongodb"
   }
 }

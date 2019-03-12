@@ -26,8 +26,10 @@ router.post("/api/article", function(req, res) {
     article_name: req.body.article_name,
     author_name: req.body.author_name,
     publication_source: req.body.publication_source,
-    article_url: req.body.article_url
+    article_url: req.body.article_url,
+    photo_url: req.body.photo_url
   };
+
   Article.create(article)
     // .then(function(articleData) {
     //   return User.findOneAndUpdate(
@@ -44,17 +46,27 @@ router.post("/api/article", function(req, res) {
     });
 });
 
-// Finding articles associated with a specific user ID
-// const userId = localStorage.getItem("jwtToken");
-router.get(`/api/user/:id`, function(req, res) {
-  User.find({ _id: req.paramas.id })
-    .then(function() {
-      res.json(user.article[0]);
+router.delete("/api/article/:id", function(req, res) {
+  Article.findOneAndDelete({ _id: req.params.id })
+    .then(function(data) {
+      res.json(data);
     })
-    .catch(function(error) {
-      res.json({ error: error });
+    .catch(function(err) {
+      res.json(err);
     });
 });
+
+// Finding articles associated with a specific user ID
+// const userId = localStorage.getItem("jwtToken");
+// router.get(`/api/user/:id`, function(req, res) {
+//   User.find({ _id: req.paramas.id })
+//     .then(function() {
+//       res.json(user.article[0]);
+//     })
+//     .catch(function(error) {
+//       res.json({ error: error });
+//     });
+// });
 
 // User login API view, all users
 router.get("/api/user", function(req, res) {
