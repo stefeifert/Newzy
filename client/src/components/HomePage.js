@@ -111,12 +111,16 @@ class HomePage extends Component {
       article_url: event.target.getAttribute('url'),
       photo_url: event.target.getAttribute('pic')
     }
-    // axios.post(`/api/article`)
-    //   .then((res) => {
-    //     this.setState
-    //   })
+    this.setState({newArticle: clickedArticle}, this.createSave)
     console.log(clickedArticle);
-    this.setState({newArticle: clickedArticle})
+  }
+
+  createSave = () => {
+    axios.post(`api/article`, this.state.newArticle)
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+    })
   }
 
   componentDidMount() {

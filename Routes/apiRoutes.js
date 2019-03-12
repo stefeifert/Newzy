@@ -29,6 +29,7 @@ router.post("/api/article", function(req, res) {
     article_url: req.body.article_url,
     photo_url: req.body.photo_url
   };
+
   Article.create(article)
     // .then(function(articleData) {
     //   return User.findOneAndUpdate(
@@ -42,6 +43,16 @@ router.post("/api/article", function(req, res) {
     })
     .catch(function(error) {
       res.json({ error: error });
+    });
+});
+
+router.delete("/api/article/:id", function(req, res) {
+  Article.findOneAndDelete({ _id: req.params.id })
+    .then(function(data) {
+      res.json(data);
+    })
+    .catch(function(err) {
+      res.json(err);
     });
 });
 
