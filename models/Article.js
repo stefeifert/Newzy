@@ -4,14 +4,15 @@ const Schema = mongoose.Schema;
 /**
  * Create a new Task Schema to map Mongo documents to an object in our node application
  */
-var NoteSchema = new Schema({
+let ArticleSchema = new Schema({
   article_name: String,
   author_name: String,
   publication_source: String,
-  article_url: String
+  article_url: String,
+  photo_url: String
 
 });
 
-const Note = mongoose.model("Note", NoteSchema);
+const Article = mongoose.model("Article", ArticleSchema);
 
-module.exports = Note;
+module.exports = Article;
