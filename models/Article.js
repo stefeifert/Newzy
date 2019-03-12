@@ -8,7 +8,8 @@ let ArticleSchema = new Schema({
   article_name: String,
   author_name: String,
   publication_source: String,
-  article_url: String
+  article_url: String,
+  photo_url: String
 
 });
 
