@@ -10,7 +10,8 @@ const renderArticles = (articleList) => {
             <td><class="articleTitle">${articleList[i].article_name}</td>
             <td class="articleAuthor">${articleList[i].author_name}</td>
             <td class="articlePub">${articleList[i].publication_source}</td>
-            <td class="articleUrl">${articleList[i].article_url}</td>
+            <td class="articleUrl">${articleList[i].article_url}</td> 
+            <td class="photoUrl">${articleList[i].photo_url}</td>
             <td><button data-prodId="${articleList[i].id}" class="addButton btn btn-warning">Add to Cart</button></td>
         </tr>`);
     }
