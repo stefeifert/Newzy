@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import SavedArticles from "../SavedArticles";
-import { BrowserRouter, Route } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 
 
 class Dashboard extends Component {
@@ -15,7 +13,6 @@ class Dashboard extends Component {
   render() {
     const { user } = this.props.auth;
     return (
-      <BrowserRouter>
         <div className="navbar-fixed">
           <nav className="">
             <ul>
@@ -32,15 +29,15 @@ class Dashboard extends Component {
             </button>
               </li>
               <li>
+                <Link to="/SavedArticles">
                 <button>
-                    <Route exact path="/SavedArticles" component={SavedArticles} />
                     My Articles
                 </button>
+                </Link>
               </li>
             </ul>
           </nav>
         </div>
-      </BrowserRouter>
     );
   }
 }
