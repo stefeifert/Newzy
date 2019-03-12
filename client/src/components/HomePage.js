@@ -129,38 +129,38 @@ class HomePage extends Component {
       }
     )
     return (
-      <div className="HomePage">
-        <Dashboard />
-        <SourceButtons
-          sourcesChangeHandler={this.sourcesChangeHandler}
-          btnRow={this.state.createButtons}
-          sourcesClickHandler={this.sourcesClickHandler}
-        />
-        <span>{sourcesBtn}</span>
-        <KeywordSearch
-          searchChangeHandler={this.searchChangeHandler}
-          searchClickHandler={this.searchClickHandler}
-          searchResults={this.state.searchResults}
-        />
-        <div>
-          {/* {this.state.searchResults.map(d =>
-            <Result key={d.publishedAt}
-              article_title={d.title}
-              source_name={d.source_name}
-              author_name={d.author}
-              articleUrl={d.url}
-            />)} */}
-        {this.state.searchResults.map(d => <div key={d.publishedAt}>
-        <p>{d.title}</p> 
-        <p>{d.source.name}</p>
-        <p>{d.author}</p> 
-        <p><a href={d.url}>{d.url} </a></p>
-        <button onClick={this.articleSaver} title={d.title} author={d.author} publication={d.source.name} url={d.url} pic={d.urlToImage}>Save to My Articles</button>
-        <hr></hr>
-        </div>)}
-        </div>
+        <div className="HomePage">
+          <Dashboard />
+          <SourceButtons
+            sourcesChangeHandler={this.sourcesChangeHandler}
+            btnRow={this.state.createButtons}
+            sourcesClickHandler={this.sourcesClickHandler}
+          />
+          <span>{sourcesBtn}</span>
+          <KeywordSearch
+            searchChangeHandler={this.searchChangeHandler}
+            searchClickHandler={this.searchClickHandler}
+            searchResults={this.state.searchResults}
+          />
+          <div>
+            {/* {this.state.searchResults.map(d =>
+              <Result key={d.publishedAt}
+                article_title={d.title}
+                source_name={d.source_name}
+                author_name={d.author}
+                articleUrl={d.url}
+              />)} */}
+          {this.state.searchResults.map(d => <div key={d.publishedAt}>
+          <p style={{fontSize: 30, fontWeight: "bold" }}>{d.title}</p> 
+          <p style={{fontSize: 25, }}>{d.source.name}</p>
+          <p style={{fontSize: 25, }}>{d.author}</p> 
+          <p style={{fontSize: 20, }}><a href={d.url}>{d.url} </a></p>
+          <button onClick={this.articleSaver} title={d.title} author={d.author} publication={d.source.name} url={d.url} pic={d.urlToImage}>Save to My Articles</button>
+          <hr></hr>
+          </div>)}
+          </div>
 
-      </div>
+        </div>
     );
   }
 }

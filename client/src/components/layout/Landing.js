@@ -9,7 +9,7 @@ class Landing extends Component {
           <div className="row">
             <div className="col s12 center-align">
               <h4>
-                <span style={{ fontFamily: "Arial Helvetica", fontSize: 50 }}>The one place you need to go for all your news needs!</span>
+                <span style={{ fontFamily: "Arial Helvetica", fontSize: 50, fontWeight: "bold" }}>The one place you need to go for all your news needs!</span>
               </h4>
               <p className="flow-text grey-text text-darken-1">
 
