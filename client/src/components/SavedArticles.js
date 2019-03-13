@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import $ from "axios";
-import { Link } from "react-router-dom";
+import Navbar from "./layout/Navbar";
 
 const RenderArticles = props => {
   console.log("this is working");
@@ -8,13 +8,14 @@ const RenderArticles = props => {
     return (
       <div>
         {props.articleList.map(article => (
-          <div key={article._id}>
-            <p className="articleTitle">{article.article_name}</p>
-            <p className="articleAuthor">{article.author_name}</p>
-            <p className="articlePub">{article.publication_source}</p>
-            <p className="articleUrl">{article.article_url}</p>
-            <p className="photoUrl">{article.photo_url}</p>
-          </div>
+          <tr key={article._id}>
+            <th className="articleOrder"></th>
+            <td className="articleTitle">{article.article_name}</td>
+            <td className="articleAuthor">{article.author_name}</td>
+            <td className="articlePub">{article.publication_source}</td>
+            <td className="articleUrl" type="url">{article.article_url}</td>
+            <td className="photoUrl">{article.photo_url}</td>
+          </tr>
         ))}
       </div>
     );
@@ -41,11 +42,20 @@ class SavedArticles extends Component {
   render() {
     return (
       <div>
-        <Link to="/HomePage" className="btn-flat waves-effect">
-          <i className="material-icons left">keyboard_backspace</i> Back to home
-        </Link>
-        <div className="myArticles" />
-        <RenderArticles articleList={this.state.articleList} />
+        <Navbar />
+
+        <div className="container">
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col"> View your saved articles!</th>
+              </tr>
+            </thead>
+            <tbody className="myArticles">
+              <RenderArticles articleList={this.state.articleList} />
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

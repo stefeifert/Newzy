@@ -8,8 +8,12 @@ class Landing extends Component {
         <div style={{ height: "93.2vh" }} className="container valign-wrapper">
           <div className="row">
             <div className="col s12 center-align">
-              <h4>
-                <span style={{ fontFamily: "Arial Helvetica", fontSize: 50, fontWeight: "bold" }}>The one place you need to go for all your news needs!</span>
+              
+              <h1>
+              <span style={{ fontFamily: "Arial Helvetica", fontSize: 80, fontWeight: "bold" }}>Newzy</span>
+              </h1>
+              <h4>                
+                <span style={{ fontFamily: "Arial Helvetica", fontSize: 50}}>The one place you need to go for all your news needs!</span>
               </h4>
               <p className="flow-text grey-text text-darken-1">
 
