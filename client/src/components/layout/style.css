@@ -72,5 +72,10 @@ body {
 hr {
     color: dimgrey;
     border: solid 2px dimgrey;
-    height: 2px;
+    height: 1px;
+}
+
+#picture {
+    box-shadow: 0 0 8px 8px white inset;
+    width: 50%;
 }

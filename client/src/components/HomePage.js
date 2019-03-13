@@ -179,9 +179,15 @@ class HomePage extends Component {
                 <hr />
                 <p style={{ fontSize: 30, fontWeight: "bold" }}>{d.title}</p>
                 <p style={{ fontSize: 25 }}>{d.source.name}</p>
+                <div className="background"></div>
+                <div class="wrapper">
+                  <img src={d.urlToImage} alt="" style={{width: "55%", borderRadius: "20px"}}></img>
+                  <div className="shadow"></div>
+                </div>
+                <br></br>
                 <p style={{ fontSize: 25 }}>{d.author}</p>
                 <p style={{ fontSize: 20 }}>
-                  <button className='btn btn-secondary' href={d.url}>
+                <button className='btn btn-secondary' href={d.url}>
                     go to story
                   </button>
                 </p>
