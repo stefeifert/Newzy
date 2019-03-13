@@ -141,6 +141,7 @@ class HomePage extends Component {
     const sourcesBtn = currentSources.map(source => {
       return (
         <button
+          className="btn"
           onClick={this.singleSourceClick}
           key={source.id}
           value={source.id}
@@ -155,27 +156,37 @@ class HomePage extends Component {
           <Dashboard />
         </div>
         <div className="mt-5">
+          <p className="words" id="sourceWords">
+            see headlines from your favorite news sources
+          </p>
+          <p id="sourceBtns">{sourcesBtn}</p>
           <SourceButtons
             sourcesChangeHandler={this.sourcesChangeHandler}
             btnRow={this.state.createButtons}
             sourcesClickHandler={this.sourcesClickHandler}
           />
-          <span>{sourcesBtn}</span>
+          <p className="words" id="keywordWords">
+            or just search by keyword
+          </p>
           <KeywordSearch
             searchChangeHandler={this.searchChangeHandler}
             searchClickHandler={this.searchClickHandler}
             searchResults={this.state.searchResults}
           />
-          <div>
+          <div className="resultsDiv">
             {this.state.searchResults.map(d => (
-              <div key={d.publishedAt}>
+              <div className="resultsDiv" key={d.publishedAt}>
+                <hr />
                 <p style={{ fontSize: 30, fontWeight: "bold" }}>{d.title}</p>
                 <p style={{ fontSize: 25 }}>{d.source.name}</p>
                 <p style={{ fontSize: 25 }}>{d.author}</p>
                 <p style={{ fontSize: 20 }}>
-                  <a target="_blank" href={d.url}>{d.url} </a>
+                  <button className='btn btn-secondary' href={d.url}>
+                    go to story
+                  </button>
                 </p>
                 <button
+                  className="btn saveBtn"
                   onClick={this.articleSaver}
                   title={d.title}
                   author={d.author}
@@ -185,7 +196,6 @@ class HomePage extends Component {
                 >
                   Save to My Articles
                 </button>
-                <hr />
               </div>
             ))}
           </div>

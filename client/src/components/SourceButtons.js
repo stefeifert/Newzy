@@ -1,15 +1,18 @@
 import React from 'react';
+import '../App.css';
+
+
 
   const SourceButtons = (props) => (
-    <div>
-      <div>
-        <span>
+    <div id="sourceDiv">
+        {props.btnRow}
         <input 
+        id="inputSource"
         onChange={props.sourcesChangeHandler}
         value={props.value}></input>
-        <button onClick={props.sourcesClickHandler}>Add News Source             
-        </button>{props.btnRow}</span>
-      </div>
+        <button 
+        className="btn btn-secondary" id="sourceBtn" onClick={props.sourcesClickHandler}>Add News Source             
+        </button>
     </div>
   )
 
