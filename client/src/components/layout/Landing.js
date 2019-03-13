@@ -15,9 +15,7 @@ class Landing extends Component {
               <h4>                
                 <span style={{ fontFamily: "Arial Helvetica", fontSize: 50}}>The one place you need to go for all your news needs!</span>
               </h4>
-              <p className="flow-text grey-text text-darken-1">
-
-              </p>
+              
             <br />
               <Link
                 to="/register"
