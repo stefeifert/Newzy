@@ -5,4 +5,4 @@ The site was created using React for the front-end and MongoDB as the database, 
 
 This was created using a fullstack MERN approach. 
 
-[Heroku Deployement Link (https://cryptic-tor-83545.herokuapp.com/)]
+[Heroku Deployement Link](https://cryptic-tor-83545.herokuapp.com/)
