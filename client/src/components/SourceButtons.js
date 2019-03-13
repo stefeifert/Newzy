@@ -11,7 +11,7 @@ import '../App.css';
         onChange={props.sourcesChangeHandler}
         value={props.value}></input>
         <button 
-        className="btn btn=secondary" id="sourceBtn" onClick={props.sourcesClickHandler}>Add News Source             
+        className="btn btn-secondary" id="sourceBtn" onClick={props.sourcesClickHandler}>Add News Source             
         </button>
     </div>
   )

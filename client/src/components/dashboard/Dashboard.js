@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 class Dashboard extends Component {
   onLogoutClick = e => {
@@ -13,31 +12,35 @@ class Dashboard extends Component {
   render() {
     const { user } = this.props.auth;
     return (
-        <div className="navbar-fixed">
-          <nav className="">
-            <ul>
-              <li>
-                <b>Hey there,</b> {user.name.split(" ")[0]}
+      <div className="">
+        <nav className="m-auto navbar navbar-expand-lg navbar-dark">
+          <div className="">
+            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li
+                style={{ fontFamily: "monospace" }}
+                className="s5 brand-logo center black-text"
+              >
+                Newzy
               </li>
+              <li className="nav-item">
+                <b> Hey there,</b> {user.name.split(" ")[0]}!
+              </li>
+              <li className="nav-item">
+                <Link to="/SavedArticles">My Articles</Link>
+              </li>
+              <li className="nav-item" />
               <li>
                 <button
-
                   onClick={this.onLogoutClick}
-                  className="btn btn-primary waves-effect waves-light hoverable blue accent-3"
+                  className="btn btn-md waves-effect waves-light hoverable blue accent-3"
                 >
                   Logout
-            </button>
-              </li>
-              <li>
-                <Link to="/SavedArticles">
-                <button className="btn btn-primary">
-                    My Articles
                 </button>
-                </Link>
               </li>
             </ul>
-          </nav>
-        </div>
+          </div>
+        </nav>
+      </div>
     );
   }
 }

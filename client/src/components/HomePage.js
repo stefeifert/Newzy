@@ -5,6 +5,12 @@ import SourceButtons from "./SourceButtons";
 import KeywordSearch from "./KeywordSearch";
 import Dashboard from "./dashboard/Dashboard";
 
+//https://newsapi.org/v2/everything?q="hugo chavez"&apiKey=4a91afd2bdda4b18be76a2f996628566
+// article_name: String,
+// author_name: String,
+// publication_source: String,
+// article_url: String
+
 class HomePage extends Component {
   state = {
     sources: [
@@ -116,6 +122,7 @@ class HomePage extends Component {
       photo_url: event.target.getAttribute("pic")
     };
     this.setState({ newArticle: clickedArticle }, this.createSave);
+    console.log(clickedArticle);
   };
 
   createSave = () => {
@@ -134,7 +141,7 @@ class HomePage extends Component {
     const sourcesBtn = currentSources.map(source => {
       return (
         <button
-          className="btn btn-primary"
+          className="btn"
           onClick={this.singleSourceClick}
           key={source.id}
           value={source.id}
@@ -145,54 +152,53 @@ class HomePage extends Component {
     });
     return (
       <div className="HomePage">
-        <Dashboard />
-        <div className="inputArea">
-        <p className="words" id="sourceWords">See Headlines from Your Favorite News Sources</p>
-        <p id="sourceBtns">{sourcesBtn}</p>
+        <div>
+          <Dashboard />
+        </div>
+        <div className="mt-5">
+          <p className="words" id="sourceWords">
+            see headlines from your favorite news sources
+          </p>
+          <p id="sourceBtns">{sourcesBtn}</p>
           <SourceButtons
             sourcesChangeHandler={this.sourcesChangeHandler}
             btnRow={this.state.createButtons}
             sourcesClickHandler={this.sourcesClickHandler}
           />
-          <p className="words" id="keywordWords">Or Search by Keyword</p>
+          <p className="words" id="keywordWords">
+            or just search by keyword
+          </p>
           <KeywordSearch
             searchChangeHandler={this.searchChangeHandler}
             searchClickHandler={this.searchClickHandler}
             searchResults={this.state.searchResults}
           />
-        </div>
-
-        <div>
-          {/* {this.state.searchResults.map(d =>
-              <Result key={d.publishedAt}
-                article_title={d.title}
-                source_name={d.source_name}
-                author_name={d.author}
-                articleUrl={d.url}
-              />)} */}
-          {this.state.searchResults.map(d => (
-            <div key={d.publishedAt} className="resultsDiv">
-              <hr />
-              <p style={{ fontSize: 30, fontWeight: "bold" }}>{d.title}</p>
-              <p style={{ fontSize: 25 }}>{d.source.name}</p>
-              <p style={{ fontSize: 25 }}>{d.author}</p>
-              <p style={{ fontSize: 20 }}>
-                <a href={d.url}>{d.url} </a>
-              </p>
-              <button
-                className="btn btn-primary"
-                onClick={this.articleSaver}
-                title={d.title}
-                author={d.author}
-                publication={d.source.name}
-                url={d.url}
-                pic={d.urlToImage}
-              >
-                Save to My Articles
-              </button>
-
-            </div>
-          ))}
+          <div className="resultsDiv">
+            {this.state.searchResults.map(d => (
+              <div className="resultsDiv" key={d.publishedAt}>
+                <hr />
+                <p style={{ fontSize: 30, fontWeight: "bold" }}>{d.title}</p>
+                <p style={{ fontSize: 25 }}>{d.source.name}</p>
+                <p style={{ fontSize: 25 }}>{d.author}</p>
+                <p style={{ fontSize: 20 }}>
+                  <button className='btn btn-secondary' href={d.url}>
+                    go to story
+                  </button>
+                </p>
+                <button
+                  className="btn saveBtn"
+                  onClick={this.articleSaver}
+                  title={d.title}
+                  author={d.author}
+                  publication={d.source.name}
+                  url={d.url}
+                  pic={d.urlToImage}
+                >
+                  Save to My Articles
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
