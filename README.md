@@ -19,5 +19,5 @@ Nihit Tiwari<br>
 Developers:<br>
 Front End API Functionality / Design Work - Scott Rollan<br>
 Middleware Authentication / Design work - Nihit Tiwari<br>
-Backend Server/API Functionality & Database - Nihit Tiwari<br>
+Backend Server / API Functionality & Database - Nihit Tiwari<br>
 
