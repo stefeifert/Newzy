@@ -8,4 +8,15 @@ The site was created using React for the front-end, Node and Express for the run
 
 This was created using a fullstack MERN approach. 
 
+Demo Presenters:
+Stefanie Eifert
+John Merchant
+Scott Rollan
+Nihit Tiwari
+
+Developers:
+Front End API / Design Work - Scott Rollan
+Middleware Authentication / Design - Nihit Tiwari
+Backend Server and Database - Nihit Tiwari
+
 [Heroku Deployement Link](https://cryptic-tor-83545.herokuapp.com/)
