@@ -10,13 +10,13 @@ The site was created using React for the front-end, Node and Express for the run
 
 This was created using a fullstack MERN approach. 
 
-Demo Presenters:
+Demo Presenters:<br>
 Stefanie Eifert<br>
 John Merchant<br>
 Scott Rollan<br>
 Nihit Tiwari<br>
 
-Developers:
+Developers:<br>
 Front End API Functionality / Design Work - Scott Rollan<br>
 Middleware Authentication / Design work - Nihit Tiwari<br>
 Backend Server/API Functionality & Database - Nihit Tiwari<br>
