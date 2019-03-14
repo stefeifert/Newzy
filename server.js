@@ -20,14 +20,14 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 // DB Config
 const dbURI = require("./passport-config/key").mongoURI;
-// Connect to MongoDB
+// Connect to MongoDB (server is coded to handle multiple hosts when accessing the database)
 mongoose
   .connect(dbURI, { useNewUrlParser: true })
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
 
 
-// Passport middleware
+// Passport middleware (jwt token authentication)
 app.use(passport.initialize());
 // Passport config
 require("./passport-config/passport")(passport);
