@@ -18,7 +18,7 @@ class Register extends Component {
     };
   }
   componentDidMount() {
-    // If logged in and user navigates to Register page, should redirect them to dashboard
+    // If logged in and user navigates to Register page, should redirect them to HomePage
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/HomePage");
     }

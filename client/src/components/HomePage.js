@@ -184,8 +184,8 @@ class HomePage extends Component {
                 <p style={{ fontSize: 15 }}>{d.publishedAt}</p>
                 <p style={{ fontSize: 25 }}>{d.author}</p>
                 <p style={{ fontSize: 20 }}>
-                <button className='btn btn-secondary' href={d.url}>
-                    go to story
+                  <button className='btn btn-secondary'> <a href={d.url}>
+                    go to story</a>
                   </button>
                 </p>
                 <button

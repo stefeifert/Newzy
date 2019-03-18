@@ -1,4 +1,23 @@
-An app that allows the user to search and view news articles quickly and easily through specific news agencies or of their own choosing. 
-The user can log in with a username and password to create an account and have the ability to store articles. The site is mobile-responsive so users can view the app on their phones. 
+Newzy
 
-The site was created using React for the front-end and MongoDB as the database, Passport, and NEWS API to reference news agencies and articles.
+[Heroku Deployement Link](https://cryptic-tor-83545.herokuapp.com/)
+
+An app that allows the user to search and view top trending news articles quickly from a variety of news sources. Newzy allows users to easily search through specific news agencies or via keywords of their choosing. Users also have the ability to customize their search results by adding specifc news source buttons which will display top trending articles of that publication specifically. Since articles results are based on their level of trending, the news results are updated every 15 minutes. This is why users then have the ability to save articles, allowing them to view it another time, save it in order to share it, or just simply read it later.
+
+The user can log in with a username and password to create an account which then allows them access to the application and it's features.
+
+The site was created using React for the front-end, Node and Express for the runtime environment/routing, Passport for the middleware user authentication, MongoDB as the database, and finally an external api source from which we pulled information: [News API](https://newsapi.org/)
+
+This was created using a fullstack MERN approach. 
+
+Demo Presenters:<br>
+Stefanie Eifert<br>
+John Merchant<br>
+Scott Rollan<br>
+Nihit Tiwari<br>
+
+Developers:<br>
+Front End API Functionality / Design Work - Scott Rollan<br>
+Middleware Authentication / Design work - Nihit Tiwari<br>
+Backend Server / API Functionality & Database - Nihit Tiwari<br>
+
