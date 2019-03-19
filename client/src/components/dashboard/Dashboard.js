@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { Link } from "react-router-dom";
+import "../../App.css";
+
 
 class Dashboard extends Component {
   onLogoutClick = e => {
@@ -20,15 +22,15 @@ class Dashboard extends Component {
                 style={{ fontFamily: "monospace" }}
                 className="s5 brand-logo center black-text"
               >
-                Newzy
+               Newzy
               </li>
-              <li className="nav-item">
+              <li className="nav-item" id="helloUser">
                 <b> Hey there,</b> {user.name.split(" ")[0]}!
               </li>
               <li className="nav-item">
-                <Link to="/SavedArticles">My Articles</Link>
+                <p><Link id="myArticles" to="/SavedArticles">My Articles</Link></p>
               </li>
-              <li className="nav-item" />
+              <li id="emptyLI" className="nav-item" />
               <li>
                 <button
                   onClick={this.onLogoutClick}
