@@ -36,6 +36,7 @@ body {
 #inputSource,
 #inputKeyword {
     width: 15%;
+    min-width: 110px;
     height: 36px;
     background-color: rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -75,7 +76,120 @@ hr {
     height: 1px;
 }
 
+#articleTitle {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#articleSource {
+    font-size: 25px;
+}
+/* 
 #picture {
     box-shadow: 0 0 8px 8px white inset;
-    width: 50%;
+    width: 100%;
+} */
+
+
+#picHolder {
+    position: relative; 
+    text-align: center;
+    margin: 0 auto;
+    height: 100%; 
+    height:auto; /*dimensions of image*/
+}
+
+.responsiveImage {
+    width: 80%;
+    height: auto;
+}
+
+#picHolder .responsiveImage,
+#picHolder .text {
+    transition: opacity 0.75s ease-in-out;
+}
+#picHolder .text {
+    position: absolute; 
+    vertical-align: middle;
+    width: 100%;
+    padding: 4% 22%;
+    margin: 0 auto;
+    top:10px; 
+    left:0; 
+    color: #444;
+    text-align: center;
+    opacity: 0;  
+}
+
+#picHolder:hover .responsiveImage {opacity: 0.1;}
+#picHolder:hover .text {opacity: 1;}
+
+/* ///////////////MEDIA QUERY////////////////// */
+@media only screen and (max-width: 990px)  {
+
+    body{
+        margin: 2% auto;
+    }
+
+    #helloUser {
+        visibility: hidden; 
+    }
+
+    .navbar {
+        height: 85%;
+        margin: 3px;
+        padding: 0;
+        display: inline-block;
+        /* background: transparent; */
+    }
+
+    .emptyLI {
+        height: 0px;
+    }
+
+    li {
+        height: 40px;
+    }
+
+    #myArticles {
+        color: blue;
+        transform: translateY(15px);
+    }
+
+    .words {
+        font-size: 14px;
+    }
+
+    #keywordWords,
+    #keywordDiv {
+    text-align: right;
+    margin-right: 5%;
+    transform: translateY(30px);
+
+    }
+
+    #sourceBtns,
+    #sourceWords,
+    #sourceDiv {
+        text-align: left;
+        margin-left: 5%;
+    }
+
+    #articleTitle {
+        font-size: 20px;
+    }
+
+    #articleSource {
+        font-size: 17px;
+    }
+
+    #picHolder .text {
+        padding: 3px 22%;
+        font-size: 10px;
+        overflow: hidden;
+    }
+
+    .saveBtn {
+        height: auto;
+    }
 }

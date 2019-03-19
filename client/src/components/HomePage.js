@@ -177,11 +177,14 @@ class HomePage extends Component {
             {this.state.searchResults.map(d => (
               <div className="resultsDiv" key={d.publishedAt}>
                 <hr />
-                <p style={{ fontSize: 30, fontWeight: "bold" }}>{d.title}</p>
-                <p style={{ fontSize: 25 }}>{d.source.name}</p>
-                  <img src={d.urlToImage} alt="" style={{width: "55%", borderRadius: "20px"}}></img>
+                <p id="articleTitle">{d.title}</p>
+                <p id="articleSource">{d.source.name}</p>
+                <div id="picHolder">
+                  <div className="text">{d.description}</div>
+                  <img src={d.urlToImage} className="responsiveImage" alt="" style={{width: "55%", borderRadius: "20px"}}></img>
+                </div>
                 <br></br>
-                <p style={{ fontSize: 15 }}>{d.publishedAt}</p>
+                <p style={{ fontSize: 15 }}>{d.publishedAt.toString().substr(5,5)}-{d.publishedAt.toString().substr(0,4)}</p>
                 <p style={{ fontSize: 25 }}>{d.author}</p>
                 <p style={{ fontSize: 20 }}>
                   <button className='btn btn-secondary'> <a href={d.url}>
