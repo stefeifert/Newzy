@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 
 const KeywordSearch = props => (
-  <div id="keywordDiv">
+  <form id="keywordDiv">
     <input
       id="inputKeyword"
       onChange={props.searchChangeHandler}
@@ -11,7 +11,7 @@ const KeywordSearch = props => (
     <button className="btn btn-secondary" id="keywordBtn" onClick={props.searchClickHandler}>
       keyword search
     </button>
-  </div>
+  </form>
 );
 
 export default KeywordSearch;

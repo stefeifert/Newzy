@@ -4,7 +4,7 @@ import '../App.css';
 
 
   const SourceButtons = (props) => (
-    <div id="sourceDiv">
+    <form id="sourceDiv">
         {props.btnRow}
         <input 
         id="inputSource"
@@ -13,7 +13,7 @@ import '../App.css';
         <button 
         className="btn btn-secondary" id="sourceBtn" onClick={props.sourcesClickHandler}>Add News Source             
         </button>
-    </div>
+    </form>
   )
 
 

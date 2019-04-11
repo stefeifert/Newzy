@@ -30,7 +30,6 @@ class HomePage extends Component {
     searchResults: [],
     singleSource: "",
     newArticle: {
-      article_id: "",
       article_name: "",
       article_description: "",
       author_name: "",
@@ -59,7 +58,6 @@ class HomePage extends Component {
       )
       .then(result => {
         this.setState({ searchResults: result.data.articles });
-        console.log(this.state.searchResults);
       });
   };
 
@@ -86,7 +84,6 @@ class HomePage extends Component {
     event.preventDefault();
     this.setState({ sources: [...this.state.sources, this.state.newSource] });
     this.setState({ newSource: "" });
-    console.log("sources: " + this.state.sources);
   };
 
   singleSourceClick = event => {
@@ -104,14 +101,11 @@ class HomePage extends Component {
       )
       .then(result => {
         this.setState({ searchResults: result.data.articles });
-        console.log(this.state.searchResults);
       });
   };
 
   articleSaver = event => {
-    console.log(event.target.value.id);
     const clickedArticle = {
-      article_id: event.target.getAttribute("id"),
       article_name: event.target.title,
       article_description: event.target.getAttribute("description"),
       author_name: event.target.getAttribute("author"),
@@ -119,6 +113,8 @@ class HomePage extends Component {
       article_url: event.target.getAttribute("url"),
       photo_url: event.target.getAttribute("pic")
     };
+    event.target.innerHTML = "Article Saved";
+    event.target.setAttribute("disabled", "disabled");
     this.setState({ newArticle: clickedArticle }, this.createSave);
   };
 
@@ -170,35 +166,35 @@ class HomePage extends Component {
           />
           <div className="resultsDiv">
             {this.state.searchResults.map(d => (
-              <div className="resultsDiv" key={d._id}>
-                <hr />
-                <p id="articleTitle">{d.title}</p>
-                <p id="articleSource">{d.source.name}</p>
-                <div id="picHolder">
-                  <div className="text line-clamp line-clamp-5">{d.description}</div>
-                  <img src={d.urlToImage} className="responsiveImage" alt="" style={{width: "55%", borderRadius: "20px"}}></img>
+              <div className="card" key={d}>
+                <div className="card-img-top">
+                  <p>{d.description}</p>
+                  <img src={d.urlToImage} alt="Newzy" ></img>
                 </div>
-                <br></br>
-                <p style={{ fontSize: 15 }}>{d.publishedAt.toString().substr(5,5)}-{d.publishedAt.toString().substr(0,4)}</p>
-                <p style={{ fontSize: 25 }}>{d.author}</p>
-                <p style={{ fontSize: 20 }}>
-                  <button className='btn btn-secondary'> <a href={d.url}>
-                    go to story</a>
+                <div className="card-body">
+                  <h5 className="card-title">{d.title}</h5>
+                  <h6 id="articleSource">{d.source.name}</h6>
+                  <p style={{ fontSize: 15 }}>{d.publishedAt.toString().substr(5,5)}-{d.publishedAt.toString().substr(0,4)}</p>
+                  <p style={{ fontSize: 25 }}>{d.author}</p>
+                  <p style={{ fontSize: 20 }}>
+                    <button className='btn btn-secondary'> <a href={d.url}>
+                      go to story</a>
+                    </button>
+                  </p>
+                  <button
+                    className="btn saveBtn"
+                    onClick={this.articleSaver}
+                    id={d._id}
+                    title={d.title}
+                    description={d.description}
+                    author={d.author}
+                    publication={d.source.name}
+                    url={d.url}
+                    pic={d.urlToImage}
+                  >
+                    Save to My Articles
                   </button>
-                </p>
-                <button
-                  className="btn saveBtn"
-                  onClick={this.articleSaver}
-                  id={d._id}
-                  title={d.title}
-                  description={d.description}
-                  author={d.author}
-                  publication={d.source.name}
-                  url={d.url}
-                  pic={d.urlToImage}
-                >
-                  Save to My Articles
-                </button>
+                </div>
               </div>
             ))}
           </div>

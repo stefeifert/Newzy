@@ -46,7 +46,6 @@ class SavedArticles extends Component {
   deleteArticle = (event) => {
     event.preventDefault();
     let articleToDelete = event.target.value;
-    console.log("this should be an id: " + articleToDelete);
       $.delete(`/api/article/${articleToDelete}`).then(res => {
       });
       this.getArticle();
