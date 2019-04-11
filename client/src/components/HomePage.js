@@ -5,11 +5,6 @@ import SourceButtons from "./SourceButtons";
 import KeywordSearch from "./KeywordSearch";
 import Dashboard from "./dashboard/Dashboard";
 
-//https://newsapi.org/v2/everything?q="hugo chavez"&apiKey=4a91afd2bdda4b18be76a2f996628566
-// article_name: String,
-// author_name: String,
-// publication_source: String,
-// article_url: String
 
 class HomePage extends Component {
   state = {
@@ -35,7 +30,9 @@ class HomePage extends Component {
     searchResults: [],
     singleSource: "",
     newArticle: {
+      article_id: "",
       article_name: "",
+      article_description: "",
       author_name: "",
       publication_source: "",
       article_url: "",
@@ -50,7 +47,6 @@ class HomePage extends Component {
       )
       .then(result => {
         this.setState({ sourceList: result.data });
-        console.log(this.state.sourceList);
       });
   };
 
@@ -100,7 +96,6 @@ class HomePage extends Component {
   };
 
   createSourceNews = () => {
-    console.log(this.state.singleSource);
     axios
       .get(
         `https://newsapi.org/v2/top-headlines?sources=${
@@ -115,20 +110,19 @@ class HomePage extends Component {
 
   articleSaver = event => {
     const clickedArticle = {
+      article_id: event.target.getAttribute("id"),
       article_name: event.target.title,
+      article_description: event.target.getAttribute("description"),
       author_name: event.target.getAttribute("author"),
       publication_source: event.target.getAttribute("publication"),
       article_url: event.target.getAttribute("url"),
       photo_url: event.target.getAttribute("pic")
     };
     this.setState({ newArticle: clickedArticle }, this.createSave);
-    console.log(clickedArticle);
   };
 
   createSave = () => {
     axios.post(`api/article`, this.state.newArticle).then(res => {
-      console.log(res);
-      console.log(res.data);
     });
   };
 
@@ -175,12 +169,12 @@ class HomePage extends Component {
           />
           <div className="resultsDiv">
             {this.state.searchResults.map(d => (
-              <div className="resultsDiv" key={d.publishedAt}>
+              <div className="resultsDiv" key={d._id}>
                 <hr />
                 <p id="articleTitle">{d.title}</p>
                 <p id="articleSource">{d.source.name}</p>
                 <div id="picHolder">
-                  <div className="text">{d.description}</div>
+                  <div className="text line-clamp line-clamp-5">{d.description}</div>
                   <img src={d.urlToImage} className="responsiveImage" alt="" style={{width: "55%", borderRadius: "20px"}}></img>
                 </div>
                 <br></br>
@@ -194,7 +188,9 @@ class HomePage extends Component {
                 <button
                   className="btn saveBtn"
                   onClick={this.articleSaver}
+                  id={d._id}
                   title={d.title}
+                  description={d.description}
                   author={d.author}
                   publication={d.source.name}
                   url={d.url}

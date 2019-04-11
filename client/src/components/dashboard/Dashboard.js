@@ -14,7 +14,7 @@ class Dashboard extends Component {
   render() {
     const { user } = this.props.auth;
     return (
-      <div className="">
+      <div>
         <nav className="m-auto navbar navbar-expand-lg navbar-dark">
           <div className="">
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">

@@ -84,24 +84,22 @@ hr {
 #articleSource {
     font-size: 25px;
 }
-/* 
-#picture {
-    box-shadow: 0 0 8px 8px white inset;
-    width: 100%;
-} */
-
 
 #picHolder {
     position: relative; 
     text-align: center;
     margin: 0 auto;
-    height: 100%; 
     height:auto; /*dimensions of image*/
+    /* text-overflow: ellipsis; 
+    overflow: hidden; */
+    line-clamp: 3;
 }
 
 .responsiveImage {
-    width: 80%;
-    height: auto;
+    /* height: auto; */
+    min-height: 100px;
+    width: auto;
+    min-width: 178px;
 }
 
 #picHolder .responsiveImage,
@@ -114,15 +112,82 @@ hr {
     width: 100%;
     padding: 4% 22%;
     margin: 0 auto;
-    top:10px; 
-    left:0; 
+    /* top:10px;
+    left:0;  */
     color: #444;
-    text-align: center;
+    /* text-align: center; */
     opacity: 0;  
 }
 
+.line-clamp
+{
+	display            : block;
+	display            : -webkit-box;
+	-webkit-box-orient : vertical;
+	position           : relative;
+
+	line-height        : 1.2;
+	overflow           : hidden;
+	text-overflow      : ellipsis;
+	padding            : 5% 22.5% !important;
+}
+.line-clamp:after
+{
+	content    : '...';
+	text-align : right;
+	bottom     : 0;
+	right      : 0;
+	width      : 25%;
+	display    : block;
+	position   : absolute;
+	height     : calc(1em * 1.2);
+	background : linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 75%);
+}
+@supports (-webkit-line-clamp: 1)
+{
+	.line-clamp:after
+	{
+		display : none !important;
+	}
+}
+.line-clamp-1
+{
+	-webkit-line-clamp : 1;
+	height             : calc(1em * 1.2 * 1);
+}
+.line-clamp-2
+{
+	-webkit-line-clamp : 2;
+	height             : calc(1em * 1.2 * 2);
+}
+.line-clamp-3
+{
+	-webkit-line-clamp : 3;
+	height             : calc(1em * 1.2 * 3);
+}
+.line-clamp-4
+{
+	-webkit-line-clamp : 4;
+	height             : calc(1em * 1.2 * 4);
+}
+.line-clamp-5
+{
+	-webkit-line-clamp : 5;
+	height             : calc(1em * 1.2 * 10);
+}
+
+
 #picHolder:hover .responsiveImage {opacity: 0.1;}
 #picHolder:hover .text {opacity: 1;}
+
+.card {
+    width: 55%;
+    margin: 2vh auto;
+}
+.card-img-top {
+    width: 100%;
+    height: auto;
+}
 
 /* ///////////////MEDIA QUERY////////////////// */
 @media only screen and (max-width: 990px)  {
@@ -165,7 +230,6 @@ hr {
     text-align: right;
     margin-right: 5%;
     transform: translateY(30px);
-
     }
 
     #sourceBtns,
@@ -185,11 +249,15 @@ hr {
 
     #picHolder .text {
         padding: 3px 22%;
-        font-size: 10px;
-        overflow: hidden;
+        font-size: 10px;    
     }
 
     .saveBtn {
         height: auto;
     }
+    .card {
+        width: 75%;
+        margin: 2vh auto;
+    }
+    
 }
