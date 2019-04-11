@@ -109,6 +109,7 @@ class HomePage extends Component {
   };
 
   articleSaver = event => {
+    console.log(event.target.value.id);
     const clickedArticle = {
       article_id: event.target.getAttribute("id"),
       article_name: event.target.title,

@@ -15,10 +15,9 @@ const RenderArticles = props => {
                 <h6 className="articlePub">{article.publication_source}</h6>
                 <p className="card-text">{article.article_description}</p>
                 <a href={article.article_url} class="btn btn-primary">Go To Article</a>
-                <p>{article.article_id}</p>
                 <button 
                 onClick={props.deleteArticle} 
-                id={article.article_id}
+                value={article.article_name}
                 class="btn btn-primary">
                 Delete Article
                 </button>
@@ -42,15 +41,15 @@ class SavedArticles extends Component {
   getArticle = () => {
     $.get(`/api/article`).then(res => {
       this.setState({ articleList: res.data });
-      // , this.RenderArticles());
     });
   };
   deleteArticle = (event) => {
-    let articleToDelete = event.target.getAttribute("id");
+    event.preventDefault();
+    let articleToDelete = event.target.value;
     console.log("this should be an id: " + articleToDelete);
-      // $.delete(`/api/article/${articleToDelete}`).then(res => {
-      //   console.log("the following article was deleted: " + res.data);
-      // });
+      $.delete(`/api/article/${articleToDelete}`).then(res => {
+      });
+      this.getArticle();
   }
   render() {
     return (

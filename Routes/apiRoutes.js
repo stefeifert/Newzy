@@ -48,8 +48,8 @@ router.post("/api/article", function(req, res) {
     });
 });
 
-router.delete("/api/article/:id", function(req, res) {
-  Article.findOneAndDelete({ _id: req.params.id })
+router.delete("/api/article/:article_name", function(req, res) {
+  Article.findOneAndDelete({ article_name: req.params.article_name })
     .then(function(data) {
       res.json(data);
     })
