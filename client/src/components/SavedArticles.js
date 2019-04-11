@@ -3,19 +3,27 @@ import $ from "axios";
 import Navbar from "./layout/Navbar";
 
 const RenderArticles = props => {
-  console.log("this is working");
+
   if (props.articleList) {
     return (
       <div>
         {props.articleList.map(article => (
-          <tr key={article._id}>
-            <th className="articleOrder"></th>
-            <td className="articleTitle">{article.article_name}</td>
-            <td className="articleAuthor">{article.author_name}</td>
-            <td className="articlePub">{article.publication_source}</td>
-            <td className="articleUrl" type="url">{article.article_url}</td>
-            <td className="photoUrl">{article.photo_url}</td>
-          </tr>
+            <div className="card" key={article.article_id}>
+              <img className="card-img-top" src={article.photo_url} alt="Newzy"/>
+              <div className="card-body">
+                <h5 className="card-title">{article.article_name}</h5>
+                <h6 className="articlePub">{article.publication_source}</h6>
+                <p className="card-text">{article.article_description}</p>
+                <a href={article.article_url} class="btn btn-primary">Go To Article</a>
+                <p>{article.article_id}</p>
+                <button 
+                onClick={props.deleteArticle} 
+                id={article.article_id}
+                class="btn btn-primary">
+                Delete Article
+                </button>
+            </div>
+          </div>
         ))}
       </div>
     );
@@ -33,12 +41,17 @@ class SavedArticles extends Component {
 
   getArticle = () => {
     $.get(`/api/article`).then(res => {
-      console.log(res);
       this.setState({ articleList: res.data });
       // , this.RenderArticles());
     });
   };
-
+  deleteArticle = (event) => {
+    let articleToDelete = event.target.getAttribute("id");
+    console.log("this should be an id: " + articleToDelete);
+      // $.delete(`/api/article/${articleToDelete}`).then(res => {
+      //   console.log("the following article was deleted: " + res.data);
+      // });
+  }
   render() {
     return (
       <div>
@@ -52,7 +65,7 @@ class SavedArticles extends Component {
               </tr>
             </thead>
             <tbody className="myArticles">
-              <RenderArticles articleList={this.state.articleList} />
+              <RenderArticles articleList={this.state.articleList} deleteArticle={this.deleteArticle}/>
             </tbody>
           </table>
         </div>

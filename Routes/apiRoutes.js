@@ -23,7 +23,9 @@ router.get("/api/article", function(req, res) {
 // Post route for saving an article
 router.post("/api/article", function(req, res) {
   const article = {
+    article_id: req.body.article_id,
     article_name: req.body.article_name,
+    article_description: req.body.article_description,
     author_name: req.body.author_name,
     publication_source: req.body.publication_source,
     article_url: req.body.article_url,
