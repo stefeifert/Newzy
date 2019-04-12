@@ -19,7 +19,15 @@ router.get("/api/article", function(req, res) {
       res.json({ error: error });
     });
 });
-
+router.get("/api/article/byname/:article_name", function(req, res) {
+  Article.findOne({ article_name: req.params.article_name })
+    .then(function(data) {
+      res.json(data);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
 // Post route for saving an article
 router.post("/api/article", function(req, res) {
   const article = {
@@ -48,8 +56,17 @@ router.post("/api/article", function(req, res) {
     });
 });
 
-router.delete("/api/article/:article_name", function(req, res) {
-  Article.findOneAndDelete({ article_name: req.params.article_name })
+router.delete("/api/article/:id", function(req, res) {
+  Article.findOneAndDelete({ _id: req.params.id })
+    .then(function(data) {
+      res.json(data);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
+router.get("/api/article/byname/:article_name", function(req, res) {
+  Article.findOne({ article_name: req.params.article_name })
     .then(function(data) {
       res.json(data);
     })

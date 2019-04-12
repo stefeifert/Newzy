@@ -4,7 +4,7 @@ import axios from "axios";
 import SourceButtons from "./SourceButtons";
 import KeywordSearch from "./KeywordSearch";
 import Dashboard from "./dashboard/Dashboard";
-
+import Footer from "./Footer";
 
 class HomePage extends Component {
   state = {
@@ -18,12 +18,15 @@ class HomePage extends Component {
         name: "BBC News"
       },
       {
+        id: "msnbc",
+        name: "MSNBC"
+      },
+      {
         id: "fox-news",
         name: "FOX News"
       }
     ], //this array wil be used to compile buttons
     newSource: { id: "", name: "" },
-    sourceList: [], //this will be populated with verified news sources
     sourceIds: [],
     isValidSource: false,
     keywordSearch: "",
@@ -39,22 +42,12 @@ class HomePage extends Component {
     }
   };
 
-  createSourceList = () => {
-    axios
-      .get(
-        "https://newsapi.org/v2/sources?language=en&apiKey=4a91afd2bdda4b18be76a2f996628566"
-      )
-      .then(result => {
-        this.setState({ sourceList: result.data });
-      });
-  };
-
   searchResults = event => {
     axios
       .get(
         `https://newsapi.org/v2/everything?q="${
           this.state.keywordSearch
-        }"&apiKey=4a91afd2bdda4b18be76a2f996628566`
+        }"&pageSize=30&apiKey=4a91afd2bdda4b18be76a2f996628566`
       )
       .then(result => {
         this.setState({ searchResults: result.data.articles });
@@ -97,7 +90,7 @@ class HomePage extends Component {
       .get(
         `https://newsapi.org/v2/top-headlines?sources=${
           this.state.singleSource
-        }&apiKey=4a91afd2bdda4b18be76a2f996628566`
+        }&pageSize=30&apiKey=4a91afd2bdda4b18be76a2f996628566`
       )
       .then(result => {
         this.setState({ searchResults: result.data.articles });
@@ -119,13 +112,12 @@ class HomePage extends Component {
   };
 
   createSave = () => {
-    axios.post(`api/article`, this.state.newArticle).then(res => {
-    });
+    axios.post(`api/article`, this.state.newArticle).then(res => {});
   };
 
-  componentDidMount() {
-    this.createSourceList();
-  }
+  // componentDidMount() {
+  //   this.createSourceList();
+  // }
 
   render() {
     const currentSources = this.state.sources; //button array of news sources
@@ -143,62 +135,68 @@ class HomePage extends Component {
     });
     return (
       <div className="HomePage">
-        <div>
-          <Dashboard />
-        </div>
-        <div className="mt-5">
-          <p className="words" id="sourceWords">
-            see headlines from your favorite news sources
-          </p>
-          <p id="sourceBtns">{sourcesBtn}</p>
-          <SourceButtons
-            sourcesChangeHandler={this.sourcesChangeHandler}
-            btnRow={this.state.createButtons}
-            sourcesClickHandler={this.sourcesClickHandler}
-          />
-          <p className="words" id="keywordWords">
-            or just search by keyword
-          </p>
-          <KeywordSearch
-            searchChangeHandler={this.searchChangeHandler}
-            searchClickHandler={this.searchClickHandler}
-            searchResults={this.state.searchResults}
-          />
-          <div className="resultsDiv">
-            {this.state.searchResults.map(d => (
-              <div className="card" key={d}>
-                <div className="card-img-top">
-                  <p>{d.description}</p>
-                  <img src={d.urlToImage} alt="Newzy" ></img>
-                </div>
-                <div className="card-body">
-                  <h5 className="card-title">{d.title}</h5>
-                  <h6 id="articleSource">{d.source.name}</h6>
-                  <p style={{ fontSize: 15 }}>{d.publishedAt.toString().substr(5,5)}-{d.publishedAt.toString().substr(0,4)}</p>
-                  <p style={{ fontSize: 25 }}>{d.author}</p>
-                  <p style={{ fontSize: 20 }}>
-                    <button className='btn btn-secondary'> <a href={d.url}>
-                      go to story</a>
+        <div id="content-wrap">
+          <div>
+            <Dashboard />
+          </div>
+          <div className="mt-5">
+            <p className="words" id="sourceWords">
+              see headlines from your favorite news sources
+            </p>
+            <p id="sourceBtns">{sourcesBtn}</p>
+            <SourceButtons
+              verifiedSources={this.state.sourceList}
+              sourcesChangeHandler={this.sourcesChangeHandler}
+              btnRow={this.state.createButtons}
+              sourcesClickHandler={this.sourcesClickHandler}
+            />
+            <p className="words" id="keywordWords">
+              or just search by keyword
+            </p>
+            <KeywordSearch
+              searchChangeHandler={this.searchChangeHandler}
+              searchClickHandler={this.searchClickHandler}
+              searchResults={this.state.searchResults}
+            />
+            <div className="resultsDiv">
+              {this.state.searchResults.map(d => (
+                <div className="card" key={d.url.substr(9)}>
+                  <div className="card-img-top">
+                    <p>{d.description}</p>
+                    <img src={d.urlToImage} alt="Newzy" />
+                  </div>
+                  <div className="card-body">
+                    <p className="card-title">{d.title}</p>
+                    <p className="card-source">{d.source.name}</p>
+                    <p className="card-date">
+                      {d.publishedAt.toString().substr(5, 5)}-
+                      {d.publishedAt.toString().substr(0, 4)}
+                    </p>
+                    <p className="card-author">{d.author}</p>
+                    <button className="btn btn-secondary">
+                      {" "}
+                      <a href={d.url}>go to story</a>
                     </button>
-                  </p>
-                  <button
-                    className="btn saveBtn"
-                    onClick={this.articleSaver}
-                    id={d._id}
-                    title={d.title}
-                    description={d.description}
-                    author={d.author}
-                    publication={d.source.name}
-                    url={d.url}
-                    pic={d.urlToImage}
-                  >
-                    Save to My Articles
-                  </button>
+                    <button
+                      className="btn saveBtn"
+                      onClick={this.articleSaver}
+                      id={d._id}
+                      title={d.title}
+                      description={d.description}
+                      author={d.author}
+                      publication={d.source.name}
+                      url={d.url}
+                      pic={d.urlToImage}
+                    >
+                      Save to My Articles
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
