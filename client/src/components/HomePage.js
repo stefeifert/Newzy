@@ -33,12 +33,13 @@ class HomePage extends Component {
     searchResults: [],
     singleSource: "",
     newArticle: {
-      article_name: "",
-      article_description: "",
-      author_name: "",
-      publication_source: "",
-      article_url: "",
-      photo_url: ""
+      // article_name: "",
+      // article_description: "",
+      // author_name: "",
+      // publication_source: "",
+      // article_url: "",
+      // photo_url: "",
+      // identifier: ""
     }
   };
 
@@ -104,10 +105,12 @@ class HomePage extends Component {
       author_name: event.target.getAttribute("author"),
       publication_source: event.target.getAttribute("publication"),
       article_url: event.target.getAttribute("url"),
-      photo_url: event.target.getAttribute("pic")
+      photo_url: event.target.getAttribute("pic"),
+      identifier: event.target.getAttribute("identifier")
     };
     event.target.innerHTML = "Article Saved";
     event.target.setAttribute("disabled", "disabled");
+    console.log(clickedArticle);
     this.setState({ newArticle: clickedArticle }, this.createSave);
   };
 
@@ -180,13 +183,13 @@ class HomePage extends Component {
                     <button
                       className="btn saveBtn"
                       onClick={this.articleSaver}
-                      id={d._id}
                       title={d.title}
                       description={d.description}
                       author={d.author}
                       publication={d.source.name}
                       url={d.url}
                       pic={d.urlToImage}
+                      identifier={d.title.replace(/\W/g,'')}//removes all non-alphanumeric characters
                     >
                       Save to My Articles
                     </button>

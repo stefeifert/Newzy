@@ -7,7 +7,7 @@ const RenderArticles = props => {
     return (
       <div>
         {props.articleList.map(article => (
-          <div className="card" key={article.article_url}>
+          <div className="card" key={article.identifier}>
             <img className="card-img-top" src={article.photo_url} alt="Newzy" />
             <div className="card-body">
               <h5 className="card-title">{article.article_name}</h5>
@@ -17,7 +17,7 @@ const RenderArticles = props => {
               </a>
               <button
                 onClick={props.deleteArticle}
-                value={article.article_name}
+                value={article.identifier}
                 className="btn btn-primary"
               >
                 Delete Article
@@ -33,7 +33,6 @@ const RenderArticles = props => {
 class SavedArticles extends Component {
   state = {
     articleList: [],
-    articleId: ""
   };
 
   componentDidMount() {
@@ -48,13 +47,7 @@ class SavedArticles extends Component {
   deleteArticle = event => {
     event.preventDefault();
     let articleToDelete = event.target.value;
-    $.get(`/api/article/byname/${articleToDelete}`).then(res => {
-      this.setState({ articleId: res.data._id });
-      this.finishDelete();
-    });
-  };
-  finishDelete = () => {
-    $.delete(`/api/article/${this.state.articleId}`).then(res => {});
+    $.delete(`/api/article/${articleToDelete}`).then(res => {});
     this.getArticle();
   };
   render() {

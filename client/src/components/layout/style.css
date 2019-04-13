@@ -80,7 +80,7 @@ body {
     height: auto;
     position: relative; 
     text-align: center;
-    border-radius: 2vw;
+    border-radius: 2vw 2vw 0 0; 
 }
 
 .card-img-top img {

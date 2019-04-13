@@ -6,24 +6,30 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/newzy");
 const articleSeed = [
   {
     article_name: "Nihit's 1st Article",
+    article_description: "",
     author_name: "Nihit Tiwari",
     publication_source: "CNN",
     article_url: "cnn.com",
-    photo_url: "String"
+    photo_url: "String",
+    identifier: "String"
   },
   {
     article_name: "Nihit's 2nd Article",
+    article_description: "",
     author_name: "Nihit Tiwari",
     publication_source: "CBS",
     article_url: "cbsnews.com",
-    photo_url: "String"
+    photo_url: "String",
+    identifier: "String"
   },
   {
     article_name: "Nihit's 3rd Article",
+    article_description: "",
     author_name: "Nihit Tiwari",
     publication_source: "FOX",
     article_url: "foxnews.com",
-    photo_url: "String"
+    photo_url: "String",
+    identifier: "String"
   }
 ];
 

@@ -37,7 +37,8 @@ router.post("/api/article", function(req, res) {
     author_name: req.body.author_name,
     publication_source: req.body.publication_source,
     article_url: req.body.article_url,
-    photo_url: req.body.photo_url
+    photo_url: req.body.photo_url,
+    identifier: req.body.identifier
   };
 
   Article.create(article)
@@ -56,8 +57,8 @@ router.post("/api/article", function(req, res) {
     });
 });
 
-router.delete("/api/article/:id", function(req, res) {
-  Article.findOneAndDelete({ _id: req.params.id })
+router.delete("/api/article/:identifier", function(req, res) {
+  Article.findOneAndDelete({ identifier: req.params.identifier })
     .then(function(data) {
       res.json(data);
     })
