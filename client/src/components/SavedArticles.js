@@ -3,24 +3,25 @@ import $ from "axios";
 import Navbar from "./layout/Navbar";
 
 const RenderArticles = props => {
-
   if (props.articleList) {
     return (
       <div>
         {props.articleList.map(article => (
-            <div className="card" key={article.article_id}>
-              <img className="card-img-top" src={article.photo_url} alt="Newzy"/>
-              <div className="card-body">
-                <h5 className="card-title">{article.article_name}</h5>
-                <h6 className="articlePub">{article.publication_source}</h6>
-                <p className="card-text">{article.article_description}</p>
-                <a href={article.article_url} class="btn btn-primary">Go To Article</a>
-                <button 
-                onClick={props.deleteArticle} 
-                value={article.article_name}
-                class="btn btn-primary">
+          <div className="card" key={article.identifier}>
+            <img className="card-img-top" src={article.photo_url} alt="Newzy" />
+            <div className="card-body">
+              <h5 className="card-title">{article.article_name}</h5>
+              <h6 className="card-source">{article.publication_source}</h6>
+              <a href={article.article_url} className="btn btn-primary">
+                Go To Article
+              </a>
+              <button
+                onClick={props.deleteArticle}
+                value={article.identifier}
+                className="btn btn-primary"
+              >
                 Delete Article
-                </button>
+              </button>
             </div>
           </div>
         ))}
@@ -31,7 +32,7 @@ const RenderArticles = props => {
 
 class SavedArticles extends Component {
   state = {
-    articleList: []
+    articleList: [],
   };
 
   componentDidMount() {
@@ -43,30 +44,21 @@ class SavedArticles extends Component {
       this.setState({ articleList: res.data });
     });
   };
-  deleteArticle = (event) => {
+  deleteArticle = event => {
     event.preventDefault();
     let articleToDelete = event.target.value;
-      $.delete(`/api/article/${articleToDelete}`).then(res => {
-      });
-      this.getArticle();
-  }
+    $.delete(`/api/article/${articleToDelete}`).then(res => {});
+    this.getArticle();
+  };
   render() {
     return (
       <div>
         <Navbar />
 
-        <div className="container">
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col"> View your saved articles!</th>
-              </tr>
-            </thead>
-            <tbody className="myArticles">
-              <RenderArticles articleList={this.state.articleList} deleteArticle={this.deleteArticle}/>
-            </tbody>
-          </table>
-        </div>
+          <RenderArticles
+            articleList={this.state.articleList}
+            deleteArticle={this.deleteArticle}
+          />
       </div>
     );
   }

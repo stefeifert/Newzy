@@ -19,7 +19,15 @@ router.get("/api/article", function(req, res) {
       res.json({ error: error });
     });
 });
-
+router.get("/api/article/byname/:article_name", function(req, res) {
+  Article.findOne({ article_name: req.params.article_name })
+    .then(function(data) {
+      res.json(data);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
 // Post route for saving an article
 router.post("/api/article", function(req, res) {
   const article = {
@@ -29,7 +37,8 @@ router.post("/api/article", function(req, res) {
     author_name: req.body.author_name,
     publication_source: req.body.publication_source,
     article_url: req.body.article_url,
-    photo_url: req.body.photo_url
+    photo_url: req.body.photo_url,
+    identifier: req.body.identifier
   };
 
   Article.create(article)
@@ -48,8 +57,17 @@ router.post("/api/article", function(req, res) {
     });
 });
 
-router.delete("/api/article/:article_name", function(req, res) {
-  Article.findOneAndDelete({ article_name: req.params.article_name })
+router.delete("/api/article/:identifier", function(req, res) {
+  Article.findOneAndDelete({ identifier: req.params.identifier })
+    .then(function(data) {
+      res.json(data);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
+router.get("/api/article/byname/:article_name", function(req, res) {
+  Article.findOne({ article_name: req.params.article_name })
     .then(function(data) {
       res.json(data);
     })

@@ -1,12 +1,11 @@
 import React from 'react';
-import '../App.css';
-
 
 
   const SourceButtons = (props) => (
     <form id="sourceDiv">
         {props.btnRow}
         <input 
+        list={props.verifiedSources}
         id="inputSource"
         onChange={props.sourcesChangeHandler}
         value={props.value}></input>

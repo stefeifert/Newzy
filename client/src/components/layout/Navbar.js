@@ -18,15 +18,14 @@ class Navbar extends Component {
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/HomePage"
+                <span
                   style={{
                     fontFamily: "monospace"
                   }}
                   className="col s5 brand-logo center black-text"
                 >
-                  Newzy
-                </Link>
+                 <em className="subNewzy">your</em> Newzy <em className="subNewzy">articles</em>
+                </span>
               </li>
             </ul>
           </div>
