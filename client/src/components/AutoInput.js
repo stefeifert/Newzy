@@ -12,7 +12,7 @@ class AutoInput extends Component {
       axios.get('https://newsapi.org/v2/sources?apiKey=4a91afd2bdda4b18be76a2f996628566'
       ).then(result => {
           sourceArray = result.data.sources;
-          const sources = sourceArray.map((source) => source.name);
+          const sources = sourceArray.map((source) => ({ name: source.name, id: source.id}));
           this.setState({ sourceList: sources});
       });
   };
@@ -31,13 +31,14 @@ class AutoInput extends Component {
             id="inputSource"
             onChange={this.props.sourcesChangeHandler}
             value={this.props.value}
+            name={this.props.name}
             />
           <datalist id="sources">
             {this.state.sourceList.map(source => (
               <option 
-                key={source} 
-                value={source} 
-              />
+                key={source.id} 
+                id={source.id}
+                value={source.id}>{source.name}</option>
             ))}
           </datalist>
       </span>
