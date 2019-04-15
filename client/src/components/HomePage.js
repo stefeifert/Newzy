@@ -80,11 +80,10 @@ class HomePage extends Component {
     event.preventDefault();
     this.setState({ sources: [...this.state.sources, this.state.newSource] });
     this.setState({ newSource: "" });
-    document.getElementById('inputSource').value = '';
+    document.getElementById('inputSource').value='';
   };
 
   singleSourceClick = event => {
-    // event.preventDefault();
     const whichSource = event.target.value;
     this.setState({ singleSource: whichSource }, this.createSourceNews);
   };
@@ -113,7 +112,6 @@ class HomePage extends Component {
     };
     event.target.innerHTML = "Article Saved";
     event.target.setAttribute("disabled", "disabled");
-    console.log(clickedArticle);
     this.setState({ newArticle: clickedArticle }, this.createSave);
   };
 
@@ -135,7 +133,7 @@ class HomePage extends Component {
           key={source.id}
           value={source.id}
         >
-          {source.name}
+          {source.name.replace(/-/g, ' ')}
         </button>
       );
     });
@@ -153,11 +151,11 @@ class HomePage extends Component {
             <SourceButtons
               // verifiedSources={this.state.sourceList}
               sourcesChangeHandler={this.sourcesChangeHandler}
-              btnRow={this.state.createButtons}
+              // btnRow={this.state.createButtons}
               sourcesClickHandler={this.sourcesClickHandler}
             />
             <p className="words" id="keywordWords">
-              or just search by keyword
+              or search by keyword
             </p>
             <KeywordSearch
               searchChangeHandler={this.searchChangeHandler}
@@ -178,7 +176,7 @@ class HomePage extends Component {
                       {d.publishedAt.toString().substr(5, 5)}-
                       {d.publishedAt.toString().substr(0, 4)}
                     </p>
-                    <p className="card-author">{d.author}</p>
+                    {/* <p className="card-author">{d.author}</p> */}
                     <button className="btn btn-secondary">
                       {" "}
                       <a href={d.url}>go to story</a>
