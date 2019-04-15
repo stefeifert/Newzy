@@ -63,6 +63,8 @@ class HomePage extends Component {
   searchClickHandler = event => {
     event.preventDefault();
     this.searchResults();
+    document.getElementById('inputKeyword').value = '';
+
   };
 
   sourcesChangeHandler = event => {
@@ -78,6 +80,7 @@ class HomePage extends Component {
     event.preventDefault();
     this.setState({ sources: [...this.state.sources, this.state.newSource] });
     this.setState({ newSource: "" });
+    document.getElementById('inputSource').value = '';
   };
 
   singleSourceClick = event => {
