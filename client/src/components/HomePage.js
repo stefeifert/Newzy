@@ -148,7 +148,7 @@ class HomePage extends Component {
             </p>
             <p id="sourceBtns">{sourcesBtn}</p>
             <SourceButtons
-              verifiedSources={this.state.sourceList}
+              // verifiedSources={this.state.sourceList}
               sourcesChangeHandler={this.sourcesChangeHandler}
               btnRow={this.state.createButtons}
               sourcesClickHandler={this.sourcesClickHandler}

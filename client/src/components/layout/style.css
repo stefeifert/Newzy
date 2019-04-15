@@ -21,6 +21,11 @@ body {
 
 }
 
+#inputNewSource {
+    margin-left: 5%;
+    width: 25%;
+}
+
 #inputSource {
     transform: translateY(-10px);
 }
