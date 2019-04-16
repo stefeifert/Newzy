@@ -36,6 +36,7 @@ class AutoInput extends Component {
           <datalist id="sources">
             {this.state.sourceList.map(source => (
               <option 
+                dir="rtl"
                 key={source.id} 
                 id={source.id}
                 value={source.id}>{source.name}</option>

@@ -5,6 +5,7 @@ import SourceButtons from "./SourceButtons";
 import KeywordSearch from "./KeywordSearch";
 import Dashboard from "./dashboard/Dashboard";
 import Footer from "./Footer";
+import CategoryCountry from "./CategoryCountry";
 
 class HomePage extends Component {
   state = {
@@ -33,14 +34,9 @@ class HomePage extends Component {
     searchResults: [],
     singleSource: "",
     newArticle: {
-      // article_name: "",
-      // article_description: "",
-      // author_name: "",
-      // publication_source: "",
-      // article_url: "",
-      // photo_url: "",
-      // identifier: ""
-    }
+    },
+    category: "",
+    country: ""
   };
 
   searchResults = event => {
@@ -55,6 +51,16 @@ class HomePage extends Component {
       });
   };
 
+  categoryCountrySearch = event => {
+    axios
+      .get(
+        `https://newsapi.org/v2/top-headlines?pageSize=30${this.state.country}${this.state.category}&apiKey=4a91afd2bdda4b18be76a2f996628566`
+      )
+      .then(result => {
+        this.setState({ searchResults: result.data.articles});
+    });
+  }
+
   searchChangeHandler = event => {
     event.preventDefault();
     const keywordSearch = event.target.value;
@@ -66,6 +72,24 @@ class HomePage extends Component {
     document.getElementById('inputKeyword').value = '';
 
   };
+
+  categoryChangeHandler = event => {
+    event.preventDefault();
+    const categoryInput = event.target.value;
+    this.setState({ category: `&category=${categoryInput}`})
+  };  
+  countryChangeHandler = event => {
+    event.preventDefault();
+    const countryInput = event.target.value;
+    this.setState({ country: `&country=${countryInput}`})
+    if (this.state.category===''){
+      this.setState({ category: '&category=general'})
+    };
+  };
+  categoryCountryClickHandler = event => {
+    event.preventDefault();
+    this.categoryCountrySearch();
+  }
 
   sourcesChangeHandler = event => {
     event.preventDefault();
@@ -162,6 +186,10 @@ class HomePage extends Component {
               searchClickHandler={this.searchClickHandler}
               searchResults={this.state.searchResults}
             />
+            <CategoryCountry
+              categoryChangeHandler={this.categoryChangeHandler}
+              countryChangeHandler={this.countryChangeHandler}
+              clickHandler={this.categoryCountryClickHandler}/>
             <div className="resultsDiv">
               {this.state.searchResults.map(d => (
                 <div className="card" key={d.url.substr(9)}>

@@ -4,12 +4,25 @@ body {
     background-color: #e3e3e3;  
     font-family: monospace;
 }
-
+#newzy {
+    font-family: 'Bitter', serif;
+    font-size: 5vw;
+}
+#loginBtn {
+    transform: translate(41vw, -12vh);
+}
+#navbar {
+    background-color: #ee6e73;
+    padding: 2vw 4vw;
+    max-height: 25vh;
+}
 #sourceBtns,
 #sourceWords,
-#sourceDiv {
+#sourceDiv,
+#catCountDiv {
     text-align: left;
     margin-left: 15%;
+    font-size: 1.2vw;
 }
 
 
@@ -18,12 +31,8 @@ body {
     text-align: right;
     margin-right: 15%;
     transform: translateY(-30px);
+    font-size: 1.2vw;
 
-}
-
-#inputNewSource {
-    margin-left: 5%;
-    width: 25%;
 }
 
 #inputSource {
@@ -32,13 +41,27 @@ body {
 #inputKeyword {
     transform: translateY(-10px);  
 }
+
 #inputSource,
-#inputKeyword {
+#inputKeyword,
+#inputCategory {
     width: 15%;
     min-width: 110px;
     height: 36px;
     background-color: rgba(0, 0, 0, 0.1);
     text-align: center;
+}
+#inputCountry {
+    width: 11%;
+    min-width: 65px;
+    height: 36px;
+    background-color: rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+#ccBtn {
+    width: 4%;
+    min-width: 36px;
+    transform: translateY(-1px);
 }
 
 #sourceBtn {
@@ -47,7 +70,6 @@ body {
 
 #keywordBtn{    
     transform: translateY(-13px);
-
 }
 
 .btn {
@@ -122,6 +144,7 @@ body {
 .footer {
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     height: 5vh;   
     text-align: center;
@@ -132,44 +155,31 @@ body {
 }
 /* ///////////////MEDIA QUERY////////////////// */
 @media only screen and (max-width: 990px)  {
-
-    body{
-        margin: 2% auto;
+    #newzy {
+        /* font-size: 8vw; */
     }
-
-    #helloUser {
-        visibility: hidden; 
-    }
-
-    .navbar {
-        height: 85%;
-        margin: 0 3px 3px;
-        padding: 0;
-        display: inline-block;
-        /* background: transparent; */
-    }
-
-    #myArticles {
-        color: blue;
-        transform: translateY(15px);
-    }
-
     #keywordWords,
     #keywordDiv {
     text-align: right;
     margin-right: 5%;
-    transform: translateY(30px);
+    transform: translateY(2.2vw);
     }
 
+    #catCountDiv,
     #sourceBtns,
     #sourceWords,
     #sourceDiv {
         text-align: left;
         margin-left: 5%;
     }
-
+    #sourceWords,
+    #keywordWords,
+    #catCountDiv {
+        font-size: 1.5vw;
+    }
     .card-img-top p {
-        font-size: 2.5vw;    
+        font-size: 2.5vw;
+            
     }
     
     .saveBtn {
@@ -183,5 +193,18 @@ body {
     .card-date,
     .card-author {
         font-size: 3vw;
+    }
+    
+}
+
+@media only screen and (max-width: 640px)  {
+
+    #homeLink {
+        display: none;
+    }
+    #sourceWords,
+    #keywordWords,
+    #catCountDiv {
+        font-size: 3.5vw;
     }
 }

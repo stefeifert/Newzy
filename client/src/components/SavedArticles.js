@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import $ from "axios";
 import Navbar from "./layout/Navbar";
+import FooterSavedPage from "./FooterSavedPage";
 
 const RenderArticles = props => {
   if (props.articleList) {
     return (
-      <div>
+      <div className="resultsDiv">
         {props.articleList.map(article => (
           <div className="card" key={article.identifier}>
             <img className="card-img-top" src={article.photo_url} alt="Newzy" />
@@ -25,6 +26,7 @@ const RenderArticles = props => {
             </div>
           </div>
         ))}
+        <FooterSavedPage/>
       </div>
     );
   }
@@ -56,6 +58,7 @@ class SavedArticles extends Component {
         <Navbar />
 
           <RenderArticles
+            className="resultsDiv"
             articleList={this.state.articleList}
             deleteArticle={this.deleteArticle}
           />
