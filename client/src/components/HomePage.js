@@ -6,6 +6,7 @@ import KeywordSearch from "./KeywordSearch";
 import Dashboard from "./dashboard/Dashboard";
 import Footer from "./Footer";
 import CategoryCountry from "./CategoryCountry";
+import ScrollToTop from "./ScrollToTop";
 
 class HomePage extends Component {
   state = {
@@ -143,9 +144,23 @@ class HomePage extends Component {
     axios.post(`api/article`, this.state.newArticle).then(res => {});
   };
 
-  // componentDidMount() {
-  //   this.createSourceList();
-  // }
+  //SCROLLING functions
+
+  scrollFunction = () => {
+    document.getElementById("scrollBtn").style.display="block";
+  }
+
+  scrollUp = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+ componentDidMount() {
+   if(window.pageYOffset === 0){
+    document.getElementById('scrollBtn').style.display="none";
+   };
+    window.addEventListener('scroll', this.scrollFunction);
+};
 
   render() {
     const currentSources = this.state.sources; //button array of news sources
@@ -228,6 +243,8 @@ class HomePage extends Component {
             </div>
           </div>
         </div>
+        <ScrollToTop
+          scrollUp={this.scrollUp}/>
         <Footer />
       </div>
     );

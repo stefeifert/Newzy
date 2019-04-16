@@ -4,6 +4,7 @@ import Navbar from "./layout/Navbar";
 import FooterSavedPage from "./FooterSavedPage";
 
 const RenderArticles = props => {
+  
   if (props.articleList) {
     return (
       <div className="resultsDiv">
@@ -52,6 +53,7 @@ class SavedArticles extends Component {
     $.delete(`/api/article/${articleToDelete}`).then(res => {});
     this.getArticle();
   };
+
   render() {
     return (
       <div>
