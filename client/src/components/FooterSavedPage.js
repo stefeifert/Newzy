@@ -8,7 +8,6 @@ const FooterSavedPage = props => (
       <Link
         to="/HomePage"
       >
-        <i className="material-icons left">keyboard_backspace</i>
         Back to home
       </Link>
     </span>

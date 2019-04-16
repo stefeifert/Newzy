@@ -14,34 +14,40 @@ class Dashboard extends Component {
   render() {
     const { user } = this.props.auth;
     return (
-      <div>
-        <nav className="m-auto navbar navbar-expand-lg navbar-dark">
-          <div className="">
-            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-              <li
-                style={{ fontFamily: "monospace" }}
-                className="s5 brand-logo center black-text"
-              >
-               Newzy
-              </li>
-              <li className="nav-item" id="helloUser">
+      <div id="navbar">
+            <span>
+
+              <h6 
+                className="text-sm-left" 
+                id="helloUser">
                 <b> Hey there,</b> {user.name.split(" ")[0]}!
-              </li>
-              <li className="nav-item">
-                <p><Link id="myArticles" to="/SavedArticles">My Articles</Link></p>
-              </li>
-              <li id="emptyLI" className="nav-item" />
-              <li>
+              </h6>
+              <h6 
+                className="text-sm-left"
+                id="myArticles" 
+                >
+                <Link 
+                  to="/SavedArticles"
+                  >
+                  My Articles
+                  </Link>
+              </h6>
+              <h3
+                style={{ fontFamily: 'Bitter' }}
+                className="text-sm-center"
+                id="newzy"
+              ><em>
+                Newzy
+                </em>
+              </h3>
                 <button
                   onClick={this.onLogoutClick}
                   className="btn btn-md waves-effect waves-light hoverable blue accent-3"
+                  id="loginBtn"
                 >
                   Logout
                 </button>
-              </li>
-            </ul>
-          </div>
-        </nav>
+            </span>
       </div>
     );
   }

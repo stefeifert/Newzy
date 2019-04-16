@@ -6,7 +6,7 @@ import FooterSavedPage from "./FooterSavedPage";
 const RenderArticles = props => {
   if (props.articleList) {
     return (
-      <div>
+      <div className="resultsDiv">
         {props.articleList.map(article => (
           <div className="card" key={article.identifier}>
             <img className="card-img-top" src={article.photo_url} alt="Newzy" />
