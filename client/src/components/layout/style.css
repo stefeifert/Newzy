@@ -21,11 +21,6 @@ body {
 
 }
 
-#inputNewSource {
-    margin-left: 5%;
-    width: 25%;
-}
-
 #inputSource {
     transform: translateY(-10px);
 }
@@ -47,7 +42,6 @@ body {
 
 #keywordBtn{    
     transform: translateY(-13px);
-
 }
 
 .btn {
@@ -72,7 +66,7 @@ body {
 .resultsDiv {
     padding: 0 10%;
     background-color:rgba(255, 255, 255, 0.3);
-    padding-bottom: 6vh;
+    padding-bottom: 7vh;
 }
 .card {
     width: 45%;
@@ -184,4 +178,13 @@ body {
     .card-author {
         font-size: 3vw;
     }
+    
+}
+
+@media only screen and (max-width: 640px)  {
+
+    #homeLink {
+        display: none;
+    }
+
 }
