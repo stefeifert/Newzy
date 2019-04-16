@@ -13,10 +13,11 @@ class Dashboard extends Component {
   };
   render() {
     const { user } = this.props.auth;
-    return (
-      <div id="navbar">
-            <span>
-
+    return ( 
+      <nav className="navbar navbar-expand-lg">
+      <div className="container" id="navbar">
+            <div className="row">
+              <div className="col-sm-2">
               <h6 
                 className="text-sm-left" 
                 id="helloUser">
@@ -32,6 +33,8 @@ class Dashboard extends Component {
                   My Articles
                   </Link>
               </h6>
+              </div>
+              <div className="col-sm-8">
               <h3
                 style={{ fontFamily: 'Bitter' }}
                 className="text-sm-center"
@@ -40,6 +43,8 @@ class Dashboard extends Component {
                 Newzy
                 </em>
               </h3>
+              </div>
+              <div className="col-sm-2">
                 <button
                   onClick={this.onLogoutClick}
                   className="btn btn-md waves-effect waves-light hoverable blue accent-3"
@@ -47,8 +52,10 @@ class Dashboard extends Component {
                 >
                   Logout
                 </button>
-            </span>
+                </div>
+            </div>
       </div>
+      </nav>
     );
   }
 }

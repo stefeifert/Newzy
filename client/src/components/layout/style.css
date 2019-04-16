@@ -4,18 +4,23 @@ body {
     background-color: #e3e3e3;  
     font-family: monospace;
 }
+.navbar {
+    background-color: #ee6e73;
+    padding: 5vw 4vw 3vw;
+    max-height: 25vh;
+    min-height: 15vh;
+    color: black;
+}
+.container,
+.row {
+    width: 100%;
+}
 #newzy {
     font-family: 'Bitter', serif;
     font-size: 5vw;
 }
-#loginBtn {
-    transform: translate(41vw, -12vh);
-}
-#navbar {
-    background-color: #ee6e73;
-    padding: 2vw 4vw;
-    max-height: 25vh;
-}
+
+
 #sourceBtns,
 #sourceWords,
 #sourceDiv,
@@ -155,6 +160,9 @@ body {
 }
 /* ///////////////MEDIA QUERY////////////////// */
 @media only screen and (max-width: 990px)  {
+    .navbar {
+        min-height: 20vh;
+    }
     #newzy {
         /* font-size: 8vw; */
     }
@@ -198,7 +206,9 @@ body {
 }
 
 @media only screen and (max-width: 640px)  {
-
+    .navbar {
+        min-height: 22vh;
+    }
     #homeLink {
         display: none;
     }
