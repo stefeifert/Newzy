@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import $ from "axios";
 import Navbar from "./layout/Navbar";
 import FooterSavedPage from "./FooterSavedPage";
+import ScrollToTop from "./ScrollToTop";
 
 const RenderArticles = props => {
+  
   if (props.articleList) {
     return (
       <div className="resultsDiv">
@@ -26,6 +28,7 @@ const RenderArticles = props => {
             </div>
           </div>
         ))}
+        <ScrollToTop scrollUp={props.topScroll}/>
         <FooterSavedPage/>
       </div>
     );
@@ -52,6 +55,10 @@ class SavedArticles extends Component {
     $.delete(`/api/article/${articleToDelete}`).then(res => {});
     this.getArticle();
   };
+  scrollUp = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
   render() {
     return (
       <div>
@@ -61,6 +68,7 @@ class SavedArticles extends Component {
             className="resultsDiv"
             articleList={this.state.articleList}
             deleteArticle={this.deleteArticle}
+            topScroll={this.scrollUp}
           />
       </div>
     );
