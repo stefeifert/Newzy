@@ -110,16 +110,16 @@ body {
 .card-img-top {
     width: 100%;
     height: auto;
+    min-height: 140px;
     position: relative; 
     text-align: center;
-    border-radius: 2vw 2vw 0 0; 
+    border-radius: 2vw 2vw 0 0;
+    background: rgba(114,238,110, 0.4);
 }
+
 
 .card-img-top img {
     width: 100%;
-}
-.card-img-top p {
-    opacity: 0;
 }
 
 .card-img-top img,
@@ -132,6 +132,7 @@ body {
     padding: 10%;
     color: #444;
     opacity: 0;  
+    text-overflow: ellipsis; 
 }
 
 .card-img-top:hover img {opacity: 0.1;}

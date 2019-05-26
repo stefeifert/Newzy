@@ -15,7 +15,7 @@ const RenderArticles = props => {
             <div className="card-body">
               <h5 className="card-title">{article.article_name}</h5>
               <h6 className="card-source">{article.publication_source}</h6>
-              <a href={article.article_url} className="btn btn-primary">
+              <a href={article.article_url} className="btn btn-primary" target="blank">
                 Go To Article
               </a>
               <button
