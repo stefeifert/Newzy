@@ -64,7 +64,7 @@ class HomePage extends Component {
 
   searchChangeHandler = event => {
     event.preventDefault();
-    const keywordSearch = event.target.value;
+    const keywordSearch = event.target.value.replace(/ /g,"+");
     this.setState({ keywordSearch: keywordSearch });
   };
   searchClickHandler = event => {
@@ -213,7 +213,7 @@ class HomePage extends Component {
                     style={{minHeight: "150px"}}
                   >
                     <p>{d.description}</p>
-                    <img src={d.urlToImage} alt="Newzy"/>
+                    <img src={d.urlToImage} alt=''/>
                   </div>
                   <div className="card-body">
                     <p className="card-title">{d.title}</p>
