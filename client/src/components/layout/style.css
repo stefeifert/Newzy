@@ -1,20 +1,14 @@
-
 body {
     background-image: url(./photos/newspaper-background.png);
     background-color: #e3e3e3;  
     font-family: monospace;
+    text-align: center;
 }
 
-.nav-wrapper {
-    background-color: #000050;
-}
-.btn-flat,
-.subNewzy {
+.btn-flat {
     color: rgb(207, 207, 207); 
 }
-.subNewzy {
-    font-size: small;
-}
+
 .navbar {
     /* background-color: #ee6e73; */
     background-color: #000050;
@@ -26,6 +20,8 @@ body {
 .container,
 .row {
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 #newzy {
     font-family: 'Bitter', serif;
@@ -75,6 +71,7 @@ body {
     background-color: rgba(0, 0, 0, 0.1);
     text-align: center;
 }
+
 #ccBtn {
     width: 4%;
     min-width: 36px;
@@ -89,7 +86,7 @@ body {
     transform: translateY(-13px);
 }
 
-.btn {
+.btn{
     margin: 3px;
     background: rgba(255, 255, 255, 0.2);
     color: #222222;
@@ -182,7 +179,7 @@ body {
         min-height: 20vh;
     }
     #newzy {
-        /* font-size: 8vw; */
+        font-size: 6vw;
     }
     #keywordWords,
     #keywordDiv {
@@ -225,6 +222,9 @@ body {
 @media only screen and (max-width: 640px)  {
     .navbar {
         min-height: 22vh;
+    }
+    #newzy {
+        font-size: 8vw;
     }
     #homeLink {
         display: none;

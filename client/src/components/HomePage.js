@@ -180,7 +180,10 @@ class HomePage extends Component {
       <div className="HomePage">
         <div id="content-wrap">
           <div>
-            <Dashboard />
+            <Dashboard 
+            ForHomePage = "inherit"
+            ForSavedArticles = "none"
+            />
           </div>
           <div className="mt-5">
             <p className="words" id="sourceWords">
@@ -188,9 +191,7 @@ class HomePage extends Component {
             </p>
             <p id="sourceBtns">{sourcesBtn}</p>
             <SourceButtons
-              // verifiedSources={this.state.sourceList}
               sourcesChangeHandler={this.sourcesChangeHandler}
-              // btnRow={this.state.createButtons}
               sourcesClickHandler={this.sourcesClickHandler}
             />
             <p className="words" id="keywordWords">
@@ -222,12 +223,11 @@ class HomePage extends Component {
                       {d.publishedAt.toString().substr(5, 5)}-
                       {d.publishedAt.toString().substr(0, 4)}
                     </p>
-                    <button className="btn btn-secondary">
-                      {" "}
+                    <button className="btn btn-secondary cardBtn">
                       <a href={d.url} target="blank">go to story</a>
                     </button>
                     <button
-                      className="btn saveBtn"
+                      className="btn saveBtn cardBtn"
                       target="blank"
                       onClick={this.articleSaver}
                       title={d.title}

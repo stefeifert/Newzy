@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import $ from "axios";
-import Navbar from "./layout/Navbar";
+import Dashboard from "./dashboard/Dashboard";
 import FooterSavedPage from "./FooterSavedPage";
 import ScrollToTop from "./ScrollToTop";
 
@@ -62,7 +62,10 @@ class SavedArticles extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <Dashboard 
+          ForHomePage = "none"
+          ForSavedArticles = "inherit"
+        />
 
           <RenderArticles
             className="resultsDiv"
