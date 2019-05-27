@@ -64,7 +64,7 @@ class HomePage extends Component {
 
   searchChangeHandler = event => {
     event.preventDefault();
-    const keywordSearch = event.target.value;
+    const keywordSearch = event.target.value.replace(/ /g,"+");
     this.setState({ keywordSearch: keywordSearch });
   };
   searchClickHandler = event => {
@@ -180,7 +180,10 @@ class HomePage extends Component {
       <div className="HomePage">
         <div id="content-wrap">
           <div>
-            <Dashboard />
+            <Dashboard 
+            ForHomePage = "inherit"
+            ForSavedArticles = "none"
+            />
           </div>
           <div className="mt-5">
             <p className="words" id="sourceWords">
@@ -188,9 +191,7 @@ class HomePage extends Component {
             </p>
             <p id="sourceBtns">{sourcesBtn}</p>
             <SourceButtons
-              // verifiedSources={this.state.sourceList}
               sourcesChangeHandler={this.sourcesChangeHandler}
-              // btnRow={this.state.createButtons}
               sourcesClickHandler={this.sourcesClickHandler}
             />
             <p className="words" id="keywordWords">
@@ -208,9 +209,12 @@ class HomePage extends Component {
             <div className="resultsDiv">
               {this.state.searchResults.map(d => (
                 <div className="card" key={d.url.substr(9)}>
-                  <div className="card-img-top">
+                  <div 
+                    className="card-img-top"
+                    style={{minHeight: "150px"}}
+                  >
                     <p>{d.description}</p>
-                    <img src={d.urlToImage} alt="Newzy" />
+                    <img src={d.urlToImage} alt=''/>
                   </div>
                   <div className="card-body">
                     <p className="card-title">{d.title}</p>
@@ -219,13 +223,11 @@ class HomePage extends Component {
                       {d.publishedAt.toString().substr(5, 5)}-
                       {d.publishedAt.toString().substr(0, 4)}
                     </p>
-                    {/* <p className="card-author">{d.author}</p> */}
-                    <button className="btn btn-secondary">
-                      {" "}
-                      <a href={d.url}>go to story</a>
+                    <button className="btn btn-secondary cardBtn">
+                      <a href={d.url} target="blank">go to story</a>
                     </button>
                     <button
-                      className="btn saveBtn"
+                      className="btn saveBtn cardBtn"
                       target="blank"
                       onClick={this.articleSaver}
                       title={d.title}

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import $ from "axios";
-import Navbar from "./layout/Navbar";
+import Dashboard from "./dashboard/Dashboard";
 import FooterSavedPage from "./FooterSavedPage";
 import ScrollToTop from "./ScrollToTop";
 
@@ -15,7 +15,7 @@ const RenderArticles = props => {
             <div className="card-body">
               <h5 className="card-title">{article.article_name}</h5>
               <h6 className="card-source">{article.publication_source}</h6>
-              <a href={article.article_url} className="btn btn-primary">
+              <a href={article.article_url} className="btn btn-primary" target="blank">
                 Go To Article
               </a>
               <button
@@ -62,7 +62,10 @@ class SavedArticles extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <Dashboard 
+          ForHomePage = "none"
+          ForSavedArticles = "inherit"
+        />
 
           <RenderArticles
             className="resultsDiv"

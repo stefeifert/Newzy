@@ -1,19 +1,27 @@
-
 body {
     background-image: url(./photos/newspaper-background.png);
     background-color: #e3e3e3;  
     font-family: monospace;
+    text-align: center;
 }
+
+.btn-flat {
+    color: rgb(207, 207, 207); 
+}
+
 .navbar {
-    background-color: #ee6e73;
+    /* background-color: #ee6e73; */
+    background-color: #000050;
     padding: 5vw 4vw 3vw;
     max-height: 25vh;
     min-height: 15vh;
-    color: black;
+    color: white;
 }
 .container,
 .row {
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 #newzy {
     font-family: 'Bitter', serif;
@@ -63,6 +71,7 @@ body {
     background-color: rgba(0, 0, 0, 0.1);
     text-align: center;
 }
+
 #ccBtn {
     width: 4%;
     min-width: 36px;
@@ -77,7 +86,7 @@ body {
     transform: translateY(-13px);
 }
 
-.btn {
+.btn{
     margin: 3px;
     background: rgba(255, 255, 255, 0.2);
     color: #222222;
@@ -88,7 +97,6 @@ body {
     background-color: rgba(0, 0, 0, 0.15);
     color: white;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-
 }
 
 .btn:disabled {
@@ -110,16 +118,16 @@ body {
 .card-img-top {
     width: 100%;
     height: auto;
+    min-height: 140px;
     position: relative; 
     text-align: center;
-    border-radius: 2vw 2vw 0 0; 
+    border-radius: 2vw 2vw 0 0;
+    background: rgba(0,0,50, 0.4);
 }
+
 
 .card-img-top img {
     width: 100%;
-}
-.card-img-top p {
-    opacity: 0;
 }
 
 .card-img-top img,
@@ -132,8 +140,10 @@ body {
     padding: 10%;
     color: #444;
     opacity: 0;  
+    text-overflow: ellipsis; 
 }
 
+.card-img-top:hover {background: #fff;}
 .card-img-top:hover img {opacity: 0.1;}
 .card-img-top:hover p {opacity: 1;}
 
@@ -143,9 +153,6 @@ body {
     font-size: 1.5vw;
 }
 
-.subNewzy {
-    font-size: small;
-}
 #scrollBtn {
     position: fixed;
     right: 0;
@@ -162,7 +169,8 @@ body {
     text-align: center;
     font-size: 2.5vh;
     padding: 1vh 0;
-    background-color: #ee6e73;
+    /* background-color: #ee6e73; */
+    background-color: #000050;
     z-index: 2;
 }
 /* ///////////////MEDIA QUERY////////////////// */
@@ -171,7 +179,7 @@ body {
         min-height: 20vh;
     }
     #newzy {
-        /* font-size: 8vw; */
+        font-size: 6vw;
     }
     #keywordWords,
     #keywordDiv {
@@ -193,8 +201,7 @@ body {
         font-size: 1.5vw;
     }
     .card-img-top p {
-        font-size: 2.5vw;
-            
+        font-size: 2.5vw;           
     }
     
     .saveBtn {
@@ -215,6 +222,9 @@ body {
 @media only screen and (max-width: 640px)  {
     .navbar {
         min-height: 22vh;
+    }
+    #newzy {
+        font-size: 8vw;
     }
     #homeLink {
         display: none;

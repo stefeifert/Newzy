@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import LeftSideHomePage from './LeftSideHomePage';
+import NewzyLogo from "./NewzyLogo";
 import { logoutUser } from "../../actions/authActions";
-import { Link } from "react-router-dom";
 import "../../App.css";
-
+import LeftSideSavedArticles from "./LeftSideSavedArticles";
 
 class Dashboard extends Component {
   onLogoutClick = e => {
@@ -12,49 +13,35 @@ class Dashboard extends Component {
     this.props.logoutUser();
   };
   render() {
-    const { user } = this.props.auth;
-    return ( 
+    return (
       <nav className="navbar navbar-expand-lg">
-      <div className="container" id="navbar">
-            <div className="row">
-              <div className="col-sm-2">
-              <h6 
-                className="text-sm-left" 
-                id="helloUser">
-                <b> Hey there,</b> {user.name.split(" ")[0]}!
-              </h6>
-              <h6 
-                className="text-sm-left"
-                id="myArticles" 
-                >
-                <Link 
-                  to="/SavedArticles"
-                  >
-                  My Articles
-                  </Link>
-              </h6>
-              </div>
-              <div className="col-sm-8">
-              <h3
-                style={{ fontFamily: 'Bitter' }}
-                className="text-sm-center"
-                id="newzy"
-              ><em>
-                Newzy
-                </em>
-              </h3>
-              </div>
-              <div className="col-sm-2">
-                <button
-                  onClick={this.onLogoutClick}
-                  className="btn btn-md waves-effect waves-light hoverable blue accent-3"
-                  id="loginBtn"
-                >
-                  Logout
-                </button>
-                </div>
+        <div className="container" id="navbar">
+          <div className="row">
+            <div style={{ width: "30%", float: "left", textAlign: "left" }}>
+              <span style={{ display: this.props.ForHomePage }}>
+              <LeftSideHomePage />
+              </span>
+              <span style={{ display: this.props.ForSavedArticles }}>
+              <LeftSideSavedArticles/>
+              </span>
             </div>
-      </div>
+
+            <div style={{ width: "40%", textAlign: "center", clear: "both" }}>
+              <NewzyLogo />
+            </div>
+
+            <div style={{ width: "30%", margin: "0" }}>
+            <button
+              style={{ float: "right", margin: "0" }}
+              onClick={this.onLogoutClick}
+              className="btn btn-md waves-effect waves-light hoverable blue accent-3"
+              id="loginBtn"
+            >
+              Logout
+            </button>
+            </div>
+          </div>
+        </div>
       </nav>
     );
   }
