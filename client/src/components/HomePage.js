@@ -226,6 +226,7 @@ class HomePage extends Component {
                     </button>
                     <button
                       className="btn saveBtn"
+                      target="blank"
                       onClick={this.articleSaver}
                       title={d.title}
                       description={d.description}
