@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import "../App.css";
 import axios from "axios";
-import SourceButtons from "./SourceButtons";
+import NewsSources from "./NewsSources";
 import KeywordSearch from "./KeywordSearch";
 import Dashboard from "./dashboard/Dashboard";
 import Footer from "./Footer";
 import CategoryCountry from "./CategoryCountry";
+import Results from "./Results";
 import ScrollToTop from "./ScrollToTop";
 
 class HomePage extends Component {
@@ -34,13 +35,12 @@ class HomePage extends Component {
     keywordSearch: "",
     searchResults: [],
     singleSource: "",
-    newArticle: {
-    },
+    newArticle: {},
     category: "",
     country: ""
   };
 
-  searchResults = event => {
+  searchResults = () => {
     axios
       .get(
         `https://newsapi.org/v2/everything?q="${
@@ -52,7 +52,7 @@ class HomePage extends Component {
       });
   };
 
-  categoryCountrySearch = event => {
+  categoryCountrySearch = () => {
     axios
       .get(
         `https://newsapi.org/v2/top-headlines?pageSize=30${this.state.country}${this.state.category}&apiKey=4a91afd2bdda4b18be76a2f996628566`
@@ -150,11 +150,6 @@ class HomePage extends Component {
     document.getElementById("scrollBtn").style.display="block";
   }
 
-  scrollUp = () => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  }
-
  componentDidMount() {
    if(window.pageYOffset === 0){
     document.getElementById('scrollBtn').style.display="none";
@@ -163,92 +158,39 @@ class HomePage extends Component {
 };
 
   render() {
-    const currentSources = this.state.sources; //button array of news sources
-    const sourcesBtn = currentSources.map(source => {
-      return (
-        <button
-          className="btn"
-          onClick={this.singleSourceClick}
-          key={source.id}
-          value={source.id}
-        >
-          {source.name.replace(/-/g, ' ')}
-        </button>
-      );
-    });
     return (
-      <div className="HomePage">
-        <div id="content-wrap">
-          <div>
-            <Dashboard 
-            ForHomePage = "inherit"
-            ForSavedArticles = "none"
-            />
-          </div>
-          <div className="mt-5">
-            <p className="words" id="sourceWords">
-              see headlines from your favorite news sources
-            </p>
-            <p id="sourceBtns">{sourcesBtn}</p>
-            <SourceButtons
-              sourcesChangeHandler={this.sourcesChangeHandler}
-              sourcesClickHandler={this.sourcesClickHandler}
-            />
-            <p className="words" id="keywordWords">
-              or search by keyword
-            </p>
-            <KeywordSearch
-              searchChangeHandler={this.searchChangeHandler}
-              searchClickHandler={this.searchClickHandler}
-              searchResults={this.state.searchResults}
-            />
-            <CategoryCountry
-              categoryChangeHandler={this.categoryChangeHandler}
-              countryChangeHandler={this.countryChangeHandler}
-              clickHandler={this.categoryCountryClickHandler}/>
-            <div className="resultsDiv">
-              {this.state.searchResults.map(d => (
-                <div className="card" key={d.url.substr(9)}>
-                  <div 
-                    className="card-img-top"
-                    style={{minHeight: "150px"}}
-                  >
-                    <p>{d.description}</p>
-                    <img src={d.urlToImage} alt=''/>
-                  </div>
-                  <div className="card-body">
-                    <p className="card-title">{d.title}</p>
-                    <p className="card-source">{d.source.name}</p>
-                    <p className="card-date">
-                      {d.publishedAt.toString().substr(5, 5)}-
-                      {d.publishedAt.toString().substr(0, 4)}
-                    </p>
-                    <button className="btn btn-secondary cardBtn">
-                      <a href={d.url} target="blank">go to story</a>
-                    </button>
-                    <button
-                      className="btn saveBtn cardBtn"
-                      target="blank"
-                      onClick={this.articleSaver}
-                      title={d.title}
-                      description={d.description}
-                      author={d.author}
-                      publication={d.source.name}
-                      url={d.url}
-                      pic={d.urlToImage}
-                      identifier={d.title.replace(/\W/g,'')}//removes all non-alphanumeric characters
-                    >
-                      Save to My Articles
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+      <div id="content-wrap">
+        <div>
+          <Dashboard 
+          ForHomePage = "inherit"
+          ForSavedArticles = "none"
+          />
         </div>
-        <ScrollToTop
-          scrollUp={this.scrollUp}/>
-        <Footer />
+        <div className="mt-5">
+          <NewsSources 
+            sources={this.state.sources}
+            singleSourceClick={this.singleSourceClick}
+            sourcesChangeHandler={this.sourcesChangeHandler}
+            sourcesClickHandler={this.sourcesClickHandler}
+          />
+          <KeywordSearch
+            searchChangeHandler={this.searchChangeHandler}
+            searchClickHandler={this.searchClickHandler}
+            searchResults={this.state.searchResults}
+          />
+          <CategoryCountry
+            categoryChangeHandler={this.categoryChangeHandler}
+            countryChangeHandler={this.countryChangeHandler}
+            clickHandler={this.categoryCountryClickHandler}/>
+          <Results
+            searchResults={this.state.searchResults}
+          />
+        </div>
+        <ScrollToTop/>
+        <Footer
+          ForHomePage = "none"
+          ForSavedArticles = "inherit"
+        />
       </div>
     );
   }

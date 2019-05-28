@@ -10,7 +10,6 @@ body {
 }
 
 .navbar {
-    /* background-color: #ee6e73; */
     background-color: #000050;
     padding: 5vw 4vw 3vw;
     max-height: 25vh;
@@ -226,9 +225,7 @@ body {
     #newzy {
         font-size: 8vw;
     }
-    #homeLink {
-        display: none;
-    }
+
     #sourceWords,
     #keywordWords,
     #catCountDiv {
