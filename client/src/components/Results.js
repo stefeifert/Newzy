@@ -11,7 +11,7 @@ class Results extends Component {
                     style={{minHeight: "150px"}}
                   >
                     <p>{d.description}</p>
-                    <img src={d.urlToImage} alt=''/>
+                    <img src={d.urlToImage} alt="" />
                   </div>
                   <div className="card-body">
                     <p className="card-title">{d.title}</p>

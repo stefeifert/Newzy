@@ -121,7 +121,8 @@ body {
     position: relative; 
     text-align: center;
     border-radius: 2vw 2vw 0 0;
-    background-image: url(./photos/newzy.png)
+    background-color: rgba(0, 0, 0, 0.1);
+    background-image: url(./photos/neway.png);
 }
 
 
@@ -131,6 +132,7 @@ body {
 
 .card-img-top img,
 .card-img-top p {
+    z-index: 2;
     border-radius: 2vw 2vw 0 0;
     transition: opacity 0.75s ease-in-out;
 }
