@@ -30,13 +30,12 @@ class AutoInput extends Component {
             list="sources" 
             id="inputSource"
             onChange={this.props.sourcesChangeHandler}
-            value={this.props.value}
             name={this.props.name}
+            value={this.props.value}
             />
           <datalist id="sources">
             {this.state.sourceList.map(source => (
               <option 
-                dir="rtl"
                 key={source.id} 
                 id={source.id}
                 value={source.id}>{source.name}</option>

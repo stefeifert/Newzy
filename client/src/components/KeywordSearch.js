@@ -1,7 +1,10 @@
 import React from "react";
-import "../App.css";
 
 const KeywordSearch = props => (
+  <div>
+  <p className="words" id="keywordWords">
+  or search by keyword
+</p>
   <form id="keywordDiv">
     <input
       id="inputKeyword"
@@ -12,6 +15,7 @@ const KeywordSearch = props => (
       keyword search
     </button>
   </form>
+  </div>
 );
 
 export default KeywordSearch;
