@@ -121,7 +121,7 @@ body {
     position: relative; 
     text-align: center;
     border-radius: 2vw 2vw 0 0;
-    background: rgba(0,0,50, 0.4);
+    background-image: url(./photos/newzy.png)
 }
 
 
@@ -224,6 +224,10 @@ body {
     }
     #newzy {
         font-size: 8vw;
+    }
+
+    .card-img-top p {
+        font-size: 3.5vw;
     }
 
     #sourceWords,
