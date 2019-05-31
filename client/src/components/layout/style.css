@@ -143,6 +143,7 @@ body {
 }
 
 .card-img-top:hover {background: #fff;}
+.card-img-top:hover + .card-body {color: #fff;}
 .card-img-top:hover img {opacity: 0.1;}
 .card-img-top:hover p {opacity: 1;}
 

@@ -8,7 +8,7 @@ class Results extends Component {
                 <div className="card" key={d.url.substr(9)}>
                   <div 
                     className="card-img-top"
-                    style={{minHeight: "150px"}}
+                    style={{minHeight: "10vh"}}
                   >
                     <p>{d.description}</p>
                     <img src={d.urlToImage} alt=''/>
