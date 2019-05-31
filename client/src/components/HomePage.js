@@ -151,10 +151,9 @@ class HomePage extends Component {
   }
 
  componentDidMount() {
-   if(window.pageYOffset === 0){
-    document.getElementById('scrollBtn').style.display="none";
-   };
-    window.addEventListener('scroll', this.scrollFunction);
+   window.pageYOffset === 0 ?
+   document.getElementById('scrollBtn').style.display="none" :
+   window.addEventListener('scroll', this.scrollFunction);
 };
 
   render() {
