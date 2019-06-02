@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class Results extends Component {
-    render() {
+    render(props) {
         return(
             <div className="resultsDiv">
               {this.props.searchResults.map(d => (
@@ -26,7 +26,7 @@ class Results extends Component {
                     <button
                       className="btn saveBtn cardBtn"
                       target="blank"
-                      onClick={this.articleSaver}
+                      onClick={this.props.articleSaver}
                       title={d.title}
                       description={d.description}
                       author={d.author}
