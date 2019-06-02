@@ -128,7 +128,7 @@ class HomePage extends Component {
   articleSaver = event => {
     const clickedArticle = {
       article_name: event.target.title,
-      article_description: event.target.getAttribute("description"),
+      description: event.target.getAttribute("description"),
       author_name: event.target.getAttribute("author"),
       publication_source: event.target.getAttribute("publication"),
       article_url: event.target.getAttribute("url"),
