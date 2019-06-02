@@ -139,11 +139,16 @@ body {
     padding: 10%;
     color: #444;
     opacity: 0;  
+    white-space: wrap;
+    overflow: visible;
     /* text-overflow: ellipsis;  */
 }
 
 .card-img-top:hover {background: #fff;}
-.card-img-top:hover + .card-body {color: #eee;}
+.card-img-top:hover + .card-body {
+    color: #eee;
+    transition-delay: 0.33s;
+}
 .card-img-top:hover img {opacity: 0.1;}
 .card-img-top:hover p {opacity: 1;}
 
