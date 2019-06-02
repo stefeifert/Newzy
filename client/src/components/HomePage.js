@@ -144,18 +144,6 @@ class HomePage extends Component {
     axios.post(`api/article`, this.state.newArticle).then(res => {});
   };
 
-  //SCROLLING functions
-
-  scrollFunction = () => {
-    document.getElementById("scrollBtn").style.display="block";
-  }
-
- componentDidMount() {
-   window.pageYOffset === 0 ?
-   document.getElementById('scrollBtn').style.display="none" :
-   window.addEventListener('scroll', this.scrollFunction);
-};
-
   render() {
     return (
       <div id="content-wrap">
@@ -183,9 +171,10 @@ class HomePage extends Component {
             clickHandler={this.categoryCountryClickHandler}/>
           <Results
             searchResults={this.state.searchResults}
+            articleSaver={this.articleSaver}
           />
         </div>
-        <ScrollToTop/>
+        <ScrollToTop scrollUp={this.scrollUp}/>
         <Footer
           ForHomePage = "none"
           ForSavedArticles = "inherit"

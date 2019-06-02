@@ -121,7 +121,7 @@ body {
     position: relative; 
     text-align: center;
     border-radius: 2vw 2vw 0 0;
-    background-image: url(./photos/newzy.png)
+    /* background-image: url(./photos/newzy.png) */
 }
 
 
@@ -139,11 +139,11 @@ body {
     padding: 10%;
     color: #444;
     opacity: 0;  
-    text-overflow: ellipsis; 
+    /* text-overflow: ellipsis;  */
 }
 
 .card-img-top:hover {background: #fff;}
-.card-img-top:hover + .card-body {color: #fff;}
+.card-img-top:hover + .card-body {color: #eee;}
 .card-img-top:hover img {opacity: 0.1;}
 .card-img-top:hover p {opacity: 1;}
 
