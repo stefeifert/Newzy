@@ -12,11 +12,11 @@ const RenderArticles = props => {
         {props.articleList.map(article => (
           <div className="card" key={article.identifier}>
             <div 
-              className="card-img-top"
+              className="card-top"
               style={{minHeight: "10vh"}}
             >
-              <p>{article.description}</p>
-              <img src={article.photo_url} alt=''/>
+              {/* <p>{article.blurb}</p> */}
+              <img src={article.photo_url} alt='' style={{ width: "100%" }}/>
             </div>            
             <div className="card-body">
               <h5 className="card-title">{article.article_name}</h5>

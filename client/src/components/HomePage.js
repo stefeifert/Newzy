@@ -128,7 +128,7 @@ class HomePage extends Component {
   articleSaver = event => {
     const clickedArticle = {
       article_name: event.target.title,
-      description: event.target.getAttribute("description"),
+      blurb: event.target.getAttribute("blurb"),
       author_name: event.target.getAttribute("author"),
       publication_source: event.target.getAttribute("publication"),
       article_url: event.target.getAttribute("url"),
@@ -174,7 +174,7 @@ class HomePage extends Component {
             articleSaver={this.articleSaver}
           />
         </div>
-        <ScrollToTop scrollUp={this.scrollUp}/>
+        <ScrollToTop/>
         <Footer
           ForHomePage = "none"
           ForSavedArticles = "inherit"

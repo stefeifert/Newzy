@@ -28,7 +28,7 @@ class Results extends Component {
                       target="blank"
                       onClick={this.props.articleSaver}
                       title={d.title}
-                      description={d.description}
+                      blurb={d.description}
                       author={d.author}
                       publication={d.source.name}
                       url={d.url}
