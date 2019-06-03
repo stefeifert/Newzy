@@ -129,6 +129,7 @@ body {
     width: 100%;
 }
 
+.card-top img,
 .card-img-top img,
 .card-img-top p {
     border-radius: 2vw 2vw 0 0;
